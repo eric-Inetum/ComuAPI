@@ -5,6 +5,7 @@ client.connect();
 
 // Función para obtener todos los jugadores
 
+<<<<<<< HEAD
 const getTodosJugadores = (req,res) => {
     /*let filas;
     let valores;
@@ -21,6 +22,9 @@ const getTodosJugadores = (req,res) => {
             }
         }
     }*/
+=======
+const getTodosJugadores = (req, res) => {
+>>>>>>> b2e547dbeb770061baf9289c05cbabb715c737bb
     let query = req.query;
     let where = "";
     if(Object.keys(query).length > 0){

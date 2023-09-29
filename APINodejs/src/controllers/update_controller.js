@@ -113,26 +113,7 @@ const insertHistorial = (req, res) => {
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
-    // day--;
-    // if (day < 1) {
-    //     if (month == 1 || month == 2 || month == 4 || month == 6 || month == 8 || month == 9 || month == 11) {
-    //         day = 31;
-    //     } else if (month == 3) {
-    //         if (year % 4 == 0) {
-    //             day = 29;
-    //         } else {
-    //             day = 28;
-    //         }
-    //     } else {
-    //         day = 30;
-    //     }
-    //     month--;
-    // }
-    // if (month < 1) {
-    //     month = 12;
-    //     year--;
-    // }
-
+   
     let formattedDate = year + "-";
     if (month < 10) formattedDate += "0";
     formattedDate += month + "-";

@@ -1,5 +1,6 @@
  //get queries
 const getJugadores = (where) => {return `SELECT * FROM jugadores ${where}`};
+
 const getJugadorByID = (campos) => {return `SELECT ${campos} FROM jugadores WHERE id_jugador = $1`};    
 const getJugadorByEquipo = (campos) => {return `SELECT ${campos} FROM jugadores WHERE equipo = $1`};   
 const getMejorFichaje = (campos) => {return `SELECT ${campos} FROM jugadores WHERE mejor_fichaje = true `};
