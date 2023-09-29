@@ -28,7 +28,7 @@ const patchJugador = (req, res, next) => {
         res.status(200).json({ mensaje: "Jugador actualizado" });
     });
 };
-
+//asfas
 //Funcion para insertar un jugador en la tabla de jugadores
 const postJugador = (req, res, next) => {
     const {
