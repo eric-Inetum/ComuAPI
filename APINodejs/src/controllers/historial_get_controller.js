@@ -28,15 +28,52 @@ const getHistorialByID = (req, res) => {
 };
 
 const getHistorialByDia = (req, res) => {
-    const fecha = req.params.fecha;
+    const fecha = req.params.fecha.split("-");
+    let year = parseInt(fecha[0])
+    let month = parseInt(fecha[1])
+    let day = parseInt(fecha[2])
+    day++;
+
+    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+        if (day > 31) {
+            day = 1;
+            month++;
+        }
+    } else if (month == 2) {
+        if (year % 4 == 0) {
+            if (day > 29) {
+                day = 1;
+                month++;
+            }
+        } else {
+            if (day > 28) {
+                day = 1;
+                month++;
+            }
+        }
+    } else {
+        if (day > 30) {
+            day = 1;
+            month++;
+        }
+    }
+    if (month > 12) {
+        month = 1;
+        year++;
+    }
+    let formattedDate = year + "-";
+    if (month < 10) formattedDate += "0";
+        formattedDate += month + "-";
+    if (day < 10) formattedDate += "0";
+        formattedDate += day;
+
     let query = req.query;
     let where = "";
-    if(Object.keys(query).length > 0){
+    if (Object.keys(query).length > 0) {
         where = queries.constructWhereStatement(query);
         where = " AND" + where.substring(5, where.length);
     }
-    console.log("------------" + where);
-    const values = [fecha];
+    const values = [formattedDate];
     client.query(queries.getJugadoresByDia(where), values, (error, results) => {
         if (error) {
             console.error("Error executing PostgreSQL query:", error);

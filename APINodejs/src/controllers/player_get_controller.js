@@ -6,21 +6,6 @@ client.connect();
 // Función para obtener todos los jugadores
 
 const getTodosJugadores = (req, res) => {
-    /*let filas;
-    let valores;
-    let where = "";
-    if (req.query.filas && req.query.valores) {
-        console.log("exist");
-        filas = req.query.filas.split(",");
-        valores = req.query.valores.split(",");
-        if (filas.length == valores.length) {
-            console.log("valid");
-            where = "WHERE " + filas[0] + " = '" + valores[0] + "'";
-            for (let index = 1; index < filas.length; index++) {
-                where += " AND " + filas[index] + " = '" + valores[index] + "'";
-            }
-        }
-    }*/
     let query = req.query;
     let where = "";
     if(Object.keys(query).length > 0){

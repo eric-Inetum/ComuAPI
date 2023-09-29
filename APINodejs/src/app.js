@@ -8,7 +8,7 @@ const getHistorialRoutes = require("./routes/historial_routes.js");
 const updateRoutes = require("./routes/update_routes.js");
 const { swaggerDocs: V1SwaggerDocs } = require("./swagger");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 80;
 
 // Middlewares
 //app.use(limiter); // Apply limiter first

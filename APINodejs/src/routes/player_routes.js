@@ -9,11 +9,71 @@ const jugadoresController = require('../controllers/player_get_controller.js');
  *     tags:
  *     - "Jugadores"
  *     summary: Devuelve una lista de jugadores.
- *     description: Devuelve una lista con todos los jugadores de la base de datos.
+ *     description: Devuelve una lista con todos los jugadores de la base de datos. Si se añaden parametros, puede devolver 1 o muchos jugadores.
  *     parameters:
- *       - name: campos
+ *       - name: nombre
  *         in: query
- *         description: campos que van a ser mostrados al hacer la peticion.
+ *         description: nombre del jugador.
+ *         required: false
+ *         schema:
+ *           type: string
+ *       - name: propietario
+ *         in: query
+ *         description: propietario actual del jugador.
+ *         required: false
+ *         schema:
+ *           type: string
+ *       - name: equipo
+ *         in: query
+ *         description: equipo actual del jugador.
+ *         required: false
+ *         schema:
+ *           type: string
+ *       - name: posicion
+ *         in: query
+ *         description: posicion del jugador.
+ *         required: false
+ *         schema:
+ *           type: string
+ *       - name: titular
+ *         in: query
+ *         description: ¿Es titular?.
+ *         required: false
+ *         schema:
+ *           type: boolean
+ *       - name: ranking_general
+ *         in: query
+ *         description: posicion en el ranking general del jugador.
+ *         required: false
+ *         schema:
+ *           type: int
+ *       - name: mejor_fichaje
+ *         in: query
+ *         description: equipo actual del jugador.
+ *         required: false
+ *         schema:
+ *           type: boolean
+ *       - name: oferta_minima
+ *         in: query
+ *         description: equipo actual del jugador.
+ *         required: false
+ *         schema:
+ *           type: boolean
+ *       - name: ranking_equipo
+ *         in: query
+ *         description: posicion en el ranking equipo del jugador.
+ *         required: false
+ *         schema:
+ *           type: int
+ *       - name: ranking_posicion
+ *         in: query
+ *         description: posicion en el ranking posicion del jugador.
+ *         required: false
+ *         schema:
+ *           type: int
+ *       - name: racha
+ *         in: query
+ *         description: posicion en el ranking posicion del jugador.
  *         required: false
  *         schema:
  *           type: string

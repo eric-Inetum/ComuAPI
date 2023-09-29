@@ -88,7 +88,6 @@ const jugadoresController = require('../controllers/historial_get_controller.js'
  */
 router.get('/historialJugadores/:id', jugadoresController.getHistorialByID);
 
-
 /**
  * @openapi
  * /api/v1/historialJugadores/fecha/{fecha}:
