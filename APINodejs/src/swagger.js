@@ -45,7 +45,7 @@ const swaggerDocs = (app, port) => {
     res.send(swaggerSpec);
   });
   console.log(
-    `Version 1 Docs are available on http://10.228.64.253:${port}/api/v1/docs`
+    `Version 1 Docs are available on http://10.228.64.234:${port}/api/v1/docs`
     );
   };
   

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const jugadoresController = require('../controllers/player_get_controller.js');
+const checkJwt = require('../security.js');
+
 
 /**
  * @openapi
@@ -84,7 +86,7 @@ const jugadoresController = require('../controllers/player_get_controller.js');
  *       500:
  *         description: Internal server error.
  */
-router.get('/jugadores', jugadoresController.getTodosJugadores);
+router.get('/jugadores', checkJwt.checkJwt, jugadoresController.getTodosJugadores);
 
 /**
  * @openapi

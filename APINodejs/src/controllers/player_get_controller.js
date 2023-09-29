@@ -5,7 +5,7 @@ client.connect();
 
 // Función para obtener todos los jugadores
 
-const getTodosJugadores = (req, res) => {
+const getTodosJugadores = (req,res) => {
     /*let filas;
     let valores;
     let where = "";
