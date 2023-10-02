@@ -9,16 +9,16 @@ const limiter = rateLimit({
   });
 
 
-  // //jwt auth
-  // const checkJwt = auth({
-  //   audience: 'https://comu-api-atuh0/',
-  //   issuerBaseURL: 'https://dev-1pgxzwyii2blucvg.eu.auth0.com/',
-  //   tokenSigningAlg: 'RS256'
-  // });
+  //jwt auth
+  const checkJwt = auth({
+    audience: 'https://comu-api-atuh0/',
+    issuerBaseURL: 'https://dev-1pgxzwyii2blucvg.eu.auth0.com/',
+    tokenSigningAlg: 'RS256'
+  });
 
 
   module.exports= {
     limiter,
-   // checkJwt
+    checkJwt
   };
   
