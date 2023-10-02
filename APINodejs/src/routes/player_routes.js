@@ -8,6 +8,8 @@ const checkJwt = require('../security.js');
  * @openapi
  * /api/v1/jugadores:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *     - "Jugadores"
  *     summary: Devuelve todos los jugadores de comunio.
@@ -171,6 +173,8 @@ router.get('/jugadores', jugadoresController.getTodosJugadores);
  * @openapi
  * /api/v1/jugadores/{id_jugador}:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *     - "Jugadores"
  *     summary: Devuelve la informacion de un jugador..
