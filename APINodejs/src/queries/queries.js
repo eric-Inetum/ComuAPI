@@ -1,12 +1,12 @@
- //get queries
-const getJugadores = (where) => {return `SELECT * FROM jugadores ${where}`};
+//get queries
+const getJugadores = (where) => { return `SELECT * FROM jugadores ${where}` };
 
-const getJugadorByID = (campos) => {return `SELECT ${campos} FROM jugadores WHERE id_jugador = $1`};    
-const getJugadorByEquipo = (campos) => {return `SELECT ${campos} FROM jugadores WHERE equipo = $1`};   
-const getMejorFichaje = (campos) => {return `SELECT ${campos} FROM jugadores WHERE mejor_fichaje = true `};
-const getJugadoresMercado = (campos) => {return `SELECT ${campos} FROM jugadores WHERE oferta_minima IS NOT NULL`};
-const getHistorialByID = (campos) => {return `SELECT ${campos} FROM historial_jugadores WHERE id_jugador = $1 ORDER BY id_historial_jugador DESC LIMIT $2;`};
-const getJugadoresByDia = (where) => {return `SELECT * FROM historial_jugadores WHERE fecha_registro = $1 ${where}`};
+const getJugadorByID = (campos) => { return `SELECT ${campos} FROM jugadores WHERE id_jugador = $1` };
+const getJugadorByEquipo = (campos) => { return `SELECT ${campos} FROM jugadores WHERE equipo = $1` };
+const getMejorFichaje = (campos) => { return `SELECT ${campos} FROM jugadores WHERE mejor_fichaje = true ` };
+const getJugadoresMercado = (campos) => { return `SELECT ${campos} FROM jugadores WHERE oferta_minima IS NOT NULL` };
+const getHistorialByID = `SELECT * FROM historial_jugadores WHERE id_jugador = $1 ORDER BY id_historial_jugador DESC LIMIT $2;`;
+const getJugadoresByDia = (where) => { return `SELECT * FROM historial_jugadores WHERE fecha_registro = $1 ${where}` };
 //update queries SELECT TO_CHAR(fecha_registro, 'YYYY-MM-DD') as formatted_date FROM your_table;
 
 const patchJugador = "UPDATE jugadores SET propietario = $1, equipo = $2, posicion = $3, titular = $4, partidos_jugados = $5, ranking_general = $6, mejor_fichaje = $7, media_sofascore = $8, media_puntos = $9, total_puntos = $10, puntos_buenos = $11, oferta_minima = $12, valor_mercado = $13, valor_mercado_max = $14, valor_mercado_min = $15, ranking_equipo = $16, ranking_posicion = $17, tarjeta_amarilla = $18, tarjeta_roja = $19, doble_tarjeta_amarilla = $20, racha = $21, lesion = $22 WHERE id_jugador = $23";
@@ -18,15 +18,19 @@ function constructWhereStatement(query) {
     where = "WHERE ";
     for (const key in query) {
         if (query[key] == "null") {
-            where += key + " IS NULL AND ";
+            where += key + " IS NULL";
         } else if (query[key] == "notNull") {
-            where += key + " IS NOT NULL AND ";
+            where += key + " IS NOT NULL";
+        } else if (query[key].substring(0, 10) == "lowerThan_") {
+            where += key + " < '" + query[key].substring(10, query[key].length) + "'";
+        } else if (query[key].substring(0, 12) == "greaterThan_") {
+            where += key + " > '" + query[key].substring(12, query[key].length) + "'";
         } else {
-            where += key + " = '" + query[key] + "' AND ";
+            where += key + " = '" + query[key] + "'";
         }
+        where += " AND ";
     }
     where = where.substring(0, where.length - 5);
-    
     return where;
 }
 

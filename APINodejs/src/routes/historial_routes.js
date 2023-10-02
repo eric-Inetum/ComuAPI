@@ -8,8 +8,8 @@ const jugadoresController = require('../controllers/historial_get_controller.js'
  *   get:
  *     tags:
  *     - "Historial Jugadores"
- *     summary: Devuelve el historial de datos diario de un jugador marcado por ID.
- *     description: Devuelve el historial de datos diarios de un jugador identificado por su ID.
+ *     summary: Devuelve el historial de un jugador buscado por su id.
+ *     description: Devuelve el historial de un jugador buscado por su id.
  *     parameters:
  *       - name: id
  *         in: path
@@ -17,12 +17,6 @@ const jugadoresController = require('../controllers/historial_get_controller.js'
  *         required: true
  *         schema:
  *           type: integer
- *       - name: campos
- *         in: query
- *         description: campos que van a ser mostrados al hacer la peticion.
- *         required: false
- *         schema:
- *           type: string
  *     responses:
  *       200:
  *         description: Lista de registros por día del jugador.
@@ -94,19 +88,13 @@ router.get('/historialJugadores/:id', jugadoresController.getHistorialByID);
  *   get:
 *     tags:
  *     - "Historial Jugadores"
- *     summary: Devuelve el historial de datos de una fecha de todos los jugadores.
- *     description: Devuelve el historial de datos de una fecha de todos los jugadores.
+ *     summary: Devuelve todos los registros del historial de un jugador.
+ *     description:  Devuelve todos los registros del historial de un jugador.
  *     parameters:
- *       - name: fecha(YYYY-MM-DD)
+ *       - name: fecha
  *         in: path
- *         description: Fecha extracción de datos.
+ *         description: Fecha de creacion del registro en el historial.YYYY-MM-DD.
  *         required: true
- *         schema:
- *           type: string
- *       - name: campos
- *         in: query
- *         description: campos que van a ser mostrados al hacer la peticion.
- *         required: false
  *         schema:
  *           type: string
  *     responses:

@@ -7,12 +7,9 @@ client.connect();
 const getHistorialByID = (req, res) => {
     const id = req.params.id;
     let dias = req.query.dias;
-    let campos = req.query.campos;
-    if (!campos) campos = "id_jugador, nombre, equipo, posicion, titular, partidos_jugados, ranking_general, ranking_equipo, ranking_posicion, media_sofascore, media_puntos, total_puntos, valor_mercado, tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha";
-    campos = "fecha_registro," + campos;
     if (!dias) dias = 1;
     const values = [id, dias];
-    client.query(queries.getHistorialByID(campos), values, (error, results) => {
+    client.query(queries.getHistorialByID, values, (error, results) => {
         if (error) {
             console.error("Error executing MySQL query:", error);
             res.status(500).json({ error: "Internal Server Error" });
@@ -32,6 +29,9 @@ const getHistorialByDia = (req, res) => {
     let year = parseInt(fecha[0])
     let month = parseInt(fecha[1])
     let day = parseInt(fecha[2])
+    if (day > 0){
+        res.status(400)
+    }
     day++;
 
     if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
@@ -72,6 +72,9 @@ const getHistorialByDia = (req, res) => {
     if (Object.keys(query).length > 0) {
         where = queries.constructWhereStatement(query);
         where = " AND" + where.substring(5, where.length);
+        if (where.includes("id_jugador")){
+            res.status(400).json({error: "Criterio de busqueda incorrecto"})
+        }
     }
     const values = [formattedDate];
     client.query(queries.getJugadoresByDia(where), values, (error, results) => {

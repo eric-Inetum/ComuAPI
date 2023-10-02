@@ -2,7 +2,7 @@ const fs = require('fs');
 const request = require('request');
 
 
-//Funcion para obtener los registros de todas las fechas del historial a traves del id del jugador
+/*//Funcion para obtener los registros de todas las fechas del historial a traves del id del jugador
 const postKey = (req, res) => {
     var request = require("request");
     var options = { method: 'POST',
@@ -12,12 +12,10 @@ const postKey = (req, res) => {
 
     request(options, function (error, res, body) {
     if (error) throw new Error(error);
-
-    console.log(body);
+        console.log(body);
     });
 
- };
- 
- module.exports={
+};
+module.exports={
     postKey
-}
+}*/

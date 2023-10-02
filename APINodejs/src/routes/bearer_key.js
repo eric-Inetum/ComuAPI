@@ -88,7 +88,8 @@ const bearerKeyController = require('../controllers/bearer_key_controller.js');
  *       500:
  *         description: Internal server error.
  */
+/*
 router.get('/get-key', bearerKeyController.postKey);
-
+*/
 
 module.exports = router;

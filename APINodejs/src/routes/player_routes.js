@@ -10,156 +10,78 @@ const checkJwt = require('../security.js');
  *   get:
  *     tags:
  *     - "Jugadores"
- *     summary: Devuelve una lista de jugadores.
- *     description: Devuelve una lista con todos los jugadores de la base de datos. Si se añaden parametros, puede devolver 1 o muchos jugadores.
+ *     summary: Devuelve todos los jugadores de comunio.
+ *     description: Devuelve una lista con todos los jugadores de comunio. Si se añaden parametros, puede devolver 1 o muchos jugadores.
  *     parameters:
  *       - name: nombre
  *         in: query
- *         description: nombre del jugador.
+ *         description: Filtrar por nombre del jugador.
  *         required: false
  *         schema:
  *           type: string
  *       - name: propietario
  *         in: query
- *         description: propietario actual del jugador.
+ *         description: Filtrar por propietario actual del jugador.
  *         required: false
  *         schema:
  *           type: string
  *       - name: equipo
  *         in: query
- *         description: equipo actual del jugador.
+ *         description: Filtrar por equipo actual del jugador.
  *         required: false
  *         schema:
  *           type: string
  *       - name: posicion
  *         in: query
- *         description: posicion del jugador.
+ *         description: Filtrar por posicion del jugador.
  *         required: false
  *         schema:
  *           type: string
  *       - name: titular
  *         in: query
- *         description: ¿Es titular?.
+ *         description: Filtrar por titularidad.
  *         required: false
  *         schema:
  *           type: boolean
- *       - name: ranking_general
- *         in: query
- *         description: posicion en el ranking general del jugador.
- *         required: false
- *         schema:
- *           type: int
  *       - name: mejor_fichaje
  *         in: query
- *         description: equipo actual del jugador.
+ *         description: Filtrar por mejor fichaje del mercado actual.
  *         required: false
  *         schema:
  *           type: boolean
  *       - name: oferta_minima
  *         in: query
- *         description: equipo actual del jugador.
+ *         description: Filtrar por la oferta minima del jugador (En el caso de querer buscar jugadores con oferta por encima o por debajo de ua cifra concreta, usar lowerThan_cifra y greaterThan_cifra respectivamente).
  *         required: false
  *         schema:
- *           type: boolean
+ *           type: integer
+ *       - name: ranking_general
+ *         in: query
+ *         description: Filtrar por posicion en el ranking general del jugador.
+ *         required: false
+ *         schema:
+ *           type: integer
  *       - name: ranking_equipo
  *         in: query
- *         description: posicion en el ranking equipo del jugador.
+ *         description: Filtrar por posicion en el ranking equipo del jugador.
  *         required: false
  *         schema:
- *           type: int
+ *           type: integer
  *       - name: ranking_posicion
  *         in: query
- *         description: posicion en el ranking posicion del jugador.
+ *         description: Filtrar por posicion en el ranking de la posicion del jugador.
  *         required: false
  *         schema:
- *           type: int
+ *           type: integer
  *       - name: racha
  *         in: query
- *         description: posicion en el ranking posicion del jugador.
+ *         description: Filtrar por la racha actual del jugador.
  *         required: false
  *         schema:
  *           type: string
  *     responses:
  *       200:
  *         description: Lista los jugadores.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id_jugador:
- *                     type: integer
- *                   nombre:
- *                     type: string
- *                   valor_mercado_max:
- *                     type: integer
- *                   valor_mercado_min:
- *                     type: integer
- *                   ranking_equipo:
- *                     type: integer
- *                   ranking_posicion:
- *                     type: integer
- *                   tarjeta_amarilla:
- *                     type: integer
- *                   tarjeta_roja:
- *                     type: integer
- *                   doble_tarjeta_amarilla:
- *                     type: integer
- *                   titular:
- *                     type: boolean
- *                   ranking_general:
- *                     type: integer
- *                   mejor_fichaje:
- *                     type: boolean
- *                   media_sofascore:
- *                     type: number
- *                     format: double 
- *                     example: "0.00"
- *                   media_puntos:
- *                     type: number
- *                     format: double 
- *                     example: 0.00
- *                   total_puntos:
- *                     type: number
- *                     format: double 
- *                     example: 0.00
- *                   puntos_buenos:
- *                     type: integer
- *                   oferta_minima:
- *                     type: integer
- *                   valor_mercado:
- *                     type: integer
- *                   propietario:
- *                     type: string
- *                   equipo:
- *                     type: string
- *                   posicion:
- *                     type: string
- *                   racha:
- *                     type: string
- *                   partidos_jugados:
- *                     type: string
- *                   lesion:
- *                     type: string
- *       500:
- *         description: Internal server error.
- */
-router.get('/jugadores', checkJwt.checkJwt, jugadoresController.getTodosJugadores);
-
-/**
- * @openapi
- * /api/v1/jugadores/mercado:
- *   get:
- *     tags:
- *     - "Jugadores"
- *     summary: Devuelve los jugadores del mercado
- *     description: Devuelve los jugadores del mercado
- *     parameters:
- *     responses:
- *       200:
- *         description: Todos los datos del mejor fichaje.
  *         content:
  *           application/json:
  *             schema:
@@ -172,392 +94,182 @@ router.get('/jugadores', checkJwt.checkJwt, jugadoresController.getTodosJugadore
  *                     properties:
  *                       id_jugador:
  *                         type: integer
+ *                         example: 1952
  *                       nombre:
- *                         type: string
+ *                         example: "Joao Cancelo"
  *                       propietario:
- *                         type: string
+ *                         example: "Computer"
  *                       equipo:
- *                         type: string
+ *                         example: "Barcelona"
  *                       posicion:
- *                         type: string
+ *                         example: "DF"
  *                       titular:
  *                         type: boolean
+ *                         example: false
  *                       partidos_jugados:
- *                         type: string
+ *                         example: "4/7"
  *                       ranking_general:
  *                         type: integer
+ *                         example: 47
  *                       mejor_fichaje:
  *                         type: boolean
+ *                         example: true
  *                       media_sofascore:
  *                         type: number
+ *                         format: double 
+ *                         example: 7.7
  *                       media_puntos:
  *                         type: number
+ *                         format: double 
+ *                         example: 10
  *                       total_puntos:
- *                         type: integer
+ *                         type: number
+ *                         format: double 
+ *                         example: 40
  *                       puntos_buenos:
- *                         type: null
+ *                         type: integer
+ *                         example: null
  *                       oferta_minima:
- *                         type: null
+ *                         type: integer
+ *                         example: 10340000
  *                       valor_mercado:
  *                         type: integer
+ *                         example: 10280000
  *                       valor_mercado_max:
  *                         type: integer
+ *                         example: 4000000
  *                       valor_mercado_min:
  *                         type: integer
+ *                         example: 10630000
  *                       ranking_equipo:
  *                         type: integer
+ *                         example: 6
  *                       ranking_posicion:
  *                         type: integer
+ *                         example: 5
  *                       tarjeta_amarilla:
  *                         type: integer
+ *                         example: 0
  *                       tarjeta_roja:
  *                         type: integer
+ *                         example: 0
  *                       doble_tarjeta_amarilla:
  *                         type: integer
+ *                         example: 0
  *                       racha:
- *                         type: string
+ *                         example: "Buena"
  *                       lesion:
- *                         type: string
- *                     required:
- *                       - id_jugador
- *                       - nombre
- *                       - propietario
- *                       - equipo
- *                       - posicion
- *                       - titular
- *                       - partidos_jugados
- *                       - ranking_general
- *                       - mejor_fichaje
- *                       - media_sofascore
- *                       - media_puntos
- *                       - total_puntos
- *                       - puntos_buenos
- *                       - oferta_minima
- *                       - valor_mercado
- *                       - valor_mercado_max
- *                       - valor_mercado_min
- *                       - ranking_equipo
- *                       - ranking_posicion
- *                       - tarjeta_amarilla
- *                       - tarjeta_roja
- *                       - doble_tarjeta_amarilla
- *                       - racha
- *                       - lesion
- *                   required:
- *                     - jugadores
+ *                         example: "NO"
  *       500:
  *         description: Internal server error.
+ *       400:
+ *         description: Criterio de busqueda incorrecto.
  */
-router.get('/jugadores/mercado', jugadoresController.getJugadoresMercado);
+router.get('/jugadores', jugadoresController.getTodosJugadores);
 
 /**
  * @openapi
- * /api/v1/jugadores/{id}:
+ * /api/v1/jugadores/{id_jugador}:
  *   get:
  *     tags:
  *     - "Jugadores"
- *     summary: Devuelve una lista de jugadores basado en un id.
- *     description: Devuelve una lista con todos los jugadores de la base de datos.
+ *     summary: Devuelve la informacion de un jugador..
+ *     description: Devuelve la informacion de un jugador buscado por su id de jugador.
  *     parameters:
  *       - name: id_jugador
- *         in: query
- *         description: ID del jugador
+ *         in: path
+ *         description: ID del jugador a buscar
  *         required: true
  *         schema: 
  *           type: integer
- *       - name: campos
- *         in: query
- *         description: campos que van a ser mostrados al hacer la peticion.
- *         required: false
- *         schema:
- *           type: string
  *     responses:
  *       200:
  *         description: Lista los jugadores.
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id_jugador:
- *                     type: integer
- *                     example: 3423
- *                   nombre:
- *                     example: André Ferreira
- *                   valor_mercado_max:
- *                     type: integer
- *                     example: 230000
- *                   valor_mercado_min:
- *                     type: integer
- *                     example: 200000
- *                   ranking_equipo:
- *                     type: integer
- *                     example: 7
- *                   ranking_posicion:
- *                     type: integer
- *                     example: 20
- *                   tarjeta_amarilla:
- *                     type: integer
- *                   tarjeta_roja:
- *                     type: integer
- *                   doble_tarjeta_amarilla:
- *                     type: integer
- *                   titular:
- *                     type: boolean
- *                     example: true
- *                   ranking_general:
- *                     type: integer
- *                     example: 239
- *                   mejor_fichaje:
- *                     type: boolean
- *                     example: false
- *                   media_sofascore:
- *                     type: number
- *                     format: double 
- *                     example: 7.1
- *                   media_puntos:
- *                     type: number
- *                     format: double 
- *                     example: 5
- *                   total_puntos:
- *                     type: number
- *                     format: double 
- *                     example: 15
- *                   puntos_buenos:
- *                     type: integer<
- *                     example: null
- *                   oferta_minima:
- *                     type: integer
- *                     example: null
- *                   valor_mercado:
- *                     type: integer
- *                     example: 91000
- *                   propietario:
- *                     type: string
- *                     example: David
- *                   equipo:
- *                     type: string
- *                     example: Granada
- *                   posicion:
- *                     type: string
- *                     example: "PT"
- *                   racha:
- *                     type: string
- *                     example: Mala
- *                   partidos_jugados:
- *                     type: string
- *                     example: "3/6"
- *                   lesion:
- *                     type: string
- *                     example: "NO"
+ *               type: object
+ *               properties:
+ *                 jugador:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id_jugador:
+ *                         type: integer
+ *                         example: 3423
+ *                       nombre:
+ *                         example: "André Ferreira"
+ *                       valor_mercado_max:
+ *                         type: integer
+ *                         example: 230000
+ *                       valor_mercado_min:
+ *                         type: integer
+ *                         example: 200000
+ *                       ranking_equipo:
+ *                         type: integer
+ *                         example: 7
+ *                       ranking_posicion:
+ *                         type: integer
+ *                         example: 20
+ *                       tarjeta_amarilla:
+ *                         type: integer
+ *                         example: 0
+ *                       tarjeta_roja:
+ *                         type: integer
+ *                         example: 0
+ *                       doble_tarjeta_amarilla:
+ *                         type: integer
+ *                         example: 0
+ *                       titular:
+ *                         type: boolean
+ *                         example: true
+ *                       partidos_jugados:
+ *                         example: "3/6"
+ *                       ranking_general:
+ *                         type: integer
+ *                         example: 239
+ *                       mejor_fichaje:
+ *                         type: boolean
+ *                         example: false
+ *                       media_sofascore:
+ *                         type: number
+ *                         format: double 
+ *                         example: 7.1
+ *                       media_puntos:
+ *                         type: number
+ *                         format: double 
+ *                         example: 5
+ *                       total_puntos:
+ *                         type: number
+ *                         format: double 
+ *                         example: 15
+ *                       puntos_buenos:
+ *                         type: integer
+ *                         example: null
+ *                       oferta_minima:
+ *                         type: integer
+ *                         example: null
+ *                       valor_mercado:
+ *                         type: integer
+ *                         example: 91000
+ *                       propietario:
+ *                         type: string
+ *                         example: David
+ *                       equipo:
+ *                         type: string
+ *                         example: Granada
+ *                       posicion:
+ *                         type: string
+ *                         example: "PT"
+ *                       racha:
+ *                         example: "Mala"
+ *                       lesion:
+ *                         example: "NO"
  *       500:
  *         description: Internal server error.
  */
 router.get('/jugadores/:id', jugadoresController.getJugadorById);
 
-/**
- * @openapi
- * /api/v1/mejorFichaje:
- *   get:
- *     tags:
- *     - "Jugadores"
- *     summary: Devuelve el jugador considerado mejor fichaje esa jornada.
- *     description: Devuelve el jugador considerado mejor fichaje esa jornada a través de un boolean.
- *     responses:
- *       200:
- *         description: Todos los datos del mejor fichaje.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 jugadores:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       id_jugador:
- *                         type: integer
- *                       nombre:
- *                         type: string
- *                       propietario:
- *                         type: string
- *                       equipo:
- *                         type: string
- *                       posicion:
- *                         type: string
- *                       titular:
- *                         type: boolean
- *                       partidos_jugados:
- *                         type: string
- *                       ranking_general:
- *                         type: integer
- *                       mejor_fichaje:
- *                         type: boolean
- *                       media_sofascore:
- *                         type: number
- *                       media_puntos:
- *                         type: number
- *                       total_puntos:
- *                         type: integer
- *                       puntos_buenos:
- *                         type: null
- *                       oferta_minima:
- *                         type: null
- *                       valor_mercado:
- *                         type: integer
- *                       valor_mercado_max:
- *                         type: integer
- *                       valor_mercado_min:
- *                         type: integer
- *                       ranking_equipo:
- *                         type: integer
- *                       ranking_posicion:
- *                         type: integer
- *                       tarjeta_amarilla:
- *                         type: integer
- *                       tarjeta_roja:
- *                         type: integer
- *                       doble_tarjeta_amarilla:
- *                         type: integer
- *                       racha:
- *                         type: string
- *                       lesion:
- *                         type: string
- *                     required:
- *                       - id_jugador
- *                       - nombre
- *                       - propietario
- *                       - equipo
- *                       - posicion
- *                       - titular
- *                       - partidos_jugados
- *                       - ranking_general
- *                       - mejor_fichaje
- *                       - media_sofascore
- *                       - media_puntos
- *                       - total_puntos
- *                       - puntos_buenos
- *                       - oferta_minima
- *                       - valor_mercado
- *                       - valor_mercado_max
- *                       - valor_mercado_min
- *                       - ranking_equipo
- *                       - ranking_posicion
- *                       - tarjeta_amarilla
- *                       - tarjeta_roja
- *                       - doble_tarjeta_amarilla
- *                       - racha
- *                       - lesion
- *                   required:
- *                     - jugadores
- *       500:
- *         description: Internal server error.
- */
-router.get('/mejorFichaje', jugadoresController.getMejorFichaje);
-
-/**
- * @openapi
- * /api/v1/equipo/{nombreEquipo}:
- *   get:
- *     tags:
- *     - "Jugadores"
- *     summary: Devuelve los jugadores de un equipo
- *     description: Devuelve los jugadores de un equipo especificado
- *     parameters:
- *     responses:
- *       200:
- *         description: Todos los datos del mejor fichaje.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 jugadores:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       id_jugador:
- *                         type: integer
- *                       nombre:
- *                         type: string
- *                       propietario:
- *                         type: string
- *                       equipo:
- *                         type: string
- *                       posicion:
- *                         type: string
- *                       titular:
- *                         type: boolean
- *                       partidos_jugados:
- *                         type: string
- *                       ranking_general:
- *                         type: integer
- *                       mejor_fichaje:
- *                         type: boolean
- *                       media_sofascore:
- *                         type: number
- *                       media_puntos:
- *                         type: number
- *                       total_puntos:
- *                         type: integer
- *                       puntos_buenos:
- *                         type: null
- *                       oferta_minima:
- *                         type: null
- *                       valor_mercado:
- *                         type: integer
- *                       valor_mercado_max:
- *                         type: integer
- *                       valor_mercado_min:
- *                         type: integer
- *                       ranking_equipo:
- *                         type: integer
- *                       ranking_posicion:
- *                         type: integer
- *                       tarjeta_amarilla:
- *                         type: integer
- *                       tarjeta_roja:
- *                         type: integer
- *                       doble_tarjeta_amarilla:
- *                         type: integer
- *                       racha:
- *                         type: string
- *                       lesion:
- *                         type: string
- *                     required:
- *                       - id_jugador
- *                       - nombre
- *                       - propietario
- *                       - equipo
- *                       - posicion
- *                       - titular
- *                       - partidos_jugados
- *                       - ranking_general
- *                       - mejor_fichaje
- *                       - media_sofascore
- *                       - media_puntos
- *                       - total_puntos
- *                       - puntos_buenos
- *                       - oferta_minima
- *                       - valor_mercado
- *                       - valor_mercado_max
- *                       - valor_mercado_min
- *                       - ranking_equipo
- *                       - ranking_posicion
- *                       - tarjeta_amarilla
- *                       - tarjeta_roja
- *                       - doble_tarjeta_amarilla
- *                       - racha
- *                       - lesion
- *                   required:
- *                     - jugadores
- *       500:
- *         description: Internal server error.
- */
-router.get('/equipo/:nombreEquipo', jugadoresController.getJugadorByEquipo);
 
 module.exports = router;

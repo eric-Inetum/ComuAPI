@@ -5,36 +5,21 @@ client.connect();
 
 // Función para obtener todos los jugadores
 
-<<<<<<< HEAD
-const getTodosJugadores = (req,res) => {
-    /*let filas;
-    let valores;
-    let where = "";
-    if (req.query.filas && req.query.valores) {
-        console.log("exist");
-        filas = req.query.filas.split(",");
-        valores = req.query.valores.split(",");
-        if (filas.length == valores.length) {
-            console.log("valid");
-            where = "WHERE " + filas[0] + " = '" + valores[0] + "'";
-            for (let index = 1; index < filas.length; index++) {
-                where += " AND " + filas[index] + " = '" + valores[index] + "'";
-            }
-        }
-    }*/
-=======
-const getTodosJugadores = (req, res) => {
->>>>>>> b2e547dbeb770061baf9289c05cbabb715c737bb
+const getTodosJugadores = (req, res, next) => {
     let query = req.query;
     let where = "";
     if(Object.keys(query).length > 0){
         where = queries.constructWhereStatement(query);
+        if (where.includes("id_jugador")){
+            res.status(400).json({error: "Criterio de busqueda incorrecto"})
+            return;
+        }
     }
     client.query(queries.getJugadores(where), (error, results) => {
         if (error) {
             console.error('Error executing PostgreSQL query:', error);
-            res.status(500).json({ error: 'Internal Server Error' });
-            return;
+            res.status(500).json({ error: 'No se encuentran jugadores bajo el criterio especificado' });
+            return next(error);
         }
         const jugadores = results.rows;
         res.status(200).json({ jugadores });
@@ -57,55 +42,7 @@ const getJugadorById = (req, res) => {
         res.status(200).json({ jugador });
     });
 };
-
-//Funcion para obtener campos seleccionados de jugadores con mejor fichaje
-const getMejorFichaje = (req, res) => {
-    let campos = req.query.campos;
-    if (!campos) campos = "*";
-    client.query(queries.getMejorFichaje(campos), (error, results) => {
-        if (error) {
-            console.error("Error executing MySQL query:", error);
-            res.status(500).json({ error: "Internal Server Error" });
-            return;
-        }
-        const jugadores = results.rows;
-        res.status(200).json({ jugadores });
-    });
-};
-
-const getJugadorByEquipo = (req, res) => {
-    const equipo = req.params.nombreEquipo;
-    let campos = req.query.campos;
-    if (!campos) campos = "*";
-    const values = [equipo];
-    client.query(queries.getJugadorByEquipo(campos), values, (error, results) => {
-        if (error) {
-            console.error("Error executing MySQL query:", error);
-            res.status(500).json({ error: "No se encuentra los jugadores del equipo especificado" });
-            return;
-        }
-        const jugadores = results.rows;
-        res.status(200).json({ jugadores });
-    });
-};
-
-const getJugadoresMercado = (req, res) => {
-    let campos = req.query.campos;
-    if (!campos) campos = "*";
-    client.query(queries.getJugadoresMercado(campos), (error, results) => {
-        if (error) {
-            console.error("Error executing MySQL query:", error);
-            res.status(500).json({ error: "Internal Server Error" });
-            return;
-        }
-        const jugadores = results.rows;
-        res.status(200).json({ jugadores });
-    });
-};
 module.exports = {
     getTodosJugadores,
-    getJugadorById,
-    getMejorFichaje,
-    getJugadorByEquipo,
-    getJugadoresMercado
+    getJugadorById
 };
