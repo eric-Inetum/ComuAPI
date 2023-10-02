@@ -6,6 +6,8 @@ const jugadoresController = require('../controllers/historial_get_controller.js'
  * @openapi
  * /api/v1/historialJugadores/{id}:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *     - "Historial Jugadores"
  *     summary: Devuelve el historial de un jugador buscado por su id.
@@ -86,10 +88,12 @@ router.get('/historialJugadores/:id', jugadoresController.getHistorialByID);
  * @openapi
  * /api/v1/historialJugadores/fecha/{fecha}:
  *   get:
-*     tags:
- *     - "Historial Jugadores"
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *       - "Historial Jugadores"
  *     summary: Devuelve todos los registros del historial de un jugador.
- *     description:  Devuelve todos los registros del historial de un jugador.
+ *     description: Devuelve todos los registros del historial de un jugador.
  *     parameters:
  *       - name: fecha
  *         in: path

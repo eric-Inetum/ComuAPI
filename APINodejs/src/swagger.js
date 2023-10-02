@@ -19,9 +19,7 @@ const options = {
       }
     }
   },
-  security: [{
-    BearerAuth: []
-  }],
+  security: [ { bearerAuth: [] } ],
   tags:[
     {
       name: "Jugadores",
