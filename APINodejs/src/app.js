@@ -29,7 +29,7 @@ app.use((err, req, res, next)=>{
 V1SwaggerDocs(app, PORT);
 
 // Routes
-
+//
 app.use('/api/v1', postBearerKey);
 app.use(checkJwt);
 app.use('/api/v1', getJugadoresRoutes);
