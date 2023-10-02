@@ -10,7 +10,7 @@ const bearerKeyController = require('../controllers/bearer_key_controller.js');
  *   post:
  *     tags:
  *       - "Bearer Key"
- *     summary: Proporciona la clave 
+ *     summary: Proporciona la clave de acceso a la API
  *     responses:
  *       200:
  *         description: Bearer key successfully provided.

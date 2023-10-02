@@ -56,7 +56,7 @@ const checkJwt = require('../security.js');
  *         description: Filtrar por la oferta minima del jugador (En el caso de querer buscar jugadores con oferta por encima o por debajo de ua cifra concreta, usar lowerThan_cifra y greaterThan_cifra respectivamente).
  *         required: false
  *         schema:
- *           type: integer
+ *           type: string
  *       - name: ranking_general
  *         in: query
  *         description: Filtrar por posicion en el ranking general del jugador.

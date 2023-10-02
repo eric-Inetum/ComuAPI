@@ -31,7 +31,7 @@ V1SwaggerDocs(app, PORT);
 // Routes
 //
 app.use('/api/v1', postBearerKey);
-app.use(checkJwt);
+//app.use(checkJwt);
 app.use('/api/v1', getJugadoresRoutes);
 app.use('/api/v1', getHistorialRoutes);
 app.use('/api/v1', updateRoutes);
