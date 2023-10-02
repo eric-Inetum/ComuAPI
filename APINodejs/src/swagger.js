@@ -8,8 +8,20 @@ const options = {
     openapi: "3.0.0",
     info: { title: "ComuAPI",
     description: "Una api creada para conseguir información de jugadores de futbol",
-     version: "1.0.0" },
+    version: "1.0.0" },
   },
+  components: {
+    securitySchemes: {
+      BearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT'
+      }
+    }
+  },
+  security: [{
+    BearerAuth: []
+  }],
   tags:[
     {
       name: "Jugadores",
@@ -22,13 +34,18 @@ const options = {
     {
       name:"Gestion de jugadores",
       description: "Añadir un nuevo jugador"
+    },
+    {
+      name:"Bearer Key",
+      description: "Proporciona la clave para poder hacer consultas"
     }
   ],
   apis: [
     path.join(__dirname, 'app.js'),
     path.join(__dirname, 'routes', 'player_routes.js'),
     path.join(__dirname, 'routes', 'historial_routes.js'),
-    path.join(__dirname, 'routes', 'update_routes.js')
+    path.join(__dirname, 'routes', 'update_routes.js'),
+    path.join(__dirname, 'routes', 'bearer_key.js' )
   ],
 };
 

@@ -1,23 +1,33 @@
-const fs = require('fs');
 const request = require('request');
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 
-
-//Funcion para obtener los registros de todas las fechas del historial a traves del id del jugador
 const postKey = (req, res) => {
-    var request = require("request");
-    var options = { method: 'POST',
-    url: 'https://dev-1pgxzwyii2blucvg.eu.auth0.com/oauth/token',
-    headers: { 'content-type': 'application/json' },
-    body: '{"client_id":"wcovXxKIuVEUMFDbdmnN32N4FxzZbTsh","client_secret":"3OTmJF5OXhkm2d3LvVrAuhgbD-7uETYAsN5PZUGM2uhdHFQsU5x6o1B2NOzmVzh-","audience":"https://comu-api-atuh0/","grant_type":"client_credentials"}' };
+    const options = {
+        method: 'POST',
+        url: 'https://dev-1pgxzwyii2blucvg.eu.auth0.com/oauth/token',
+        headers: { 
+            'content-type': 'application/json',
 
-    request(options, function (error, res, body) {
-    if (error) throw new Error(error);
+    },
+        body: JSON.stringify({
+            client_id: process.env.AUTHO_CLIENT_ID,
+            client_secret: process.env.AUTHO_CLIENT_SECRET,
+            audience: "https://comu-api-atuh0/",
+            grant_type: "client_credentials"
+        })
+    };
 
-    console.log(body);
+    request(options, function (error, response, body) {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'Failed to fetch bearer token.' });
+        }
+        console.log("Auth0 Response:", response.statusCode, body);
+        res.json(JSON.parse(body));
     });
+};
 
- };
- 
- module.exports={
+module.exports = {
     postKey
 }

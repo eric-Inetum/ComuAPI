@@ -8,6 +8,8 @@ const checkJwt = require('../security.js');
  * @openapi
  * /api/v1/jugadores:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *     - "Jugadores"
  *     summary: Devuelve una lista de jugadores.
@@ -146,12 +148,14 @@ const checkJwt = require('../security.js');
  *       500:
  *         description: Internal server error.
  */
-router.get('/jugadores', checkJwt.checkJwt, jugadoresController.getTodosJugadores);
+router.get('/jugadores', jugadoresController.getTodosJugadores);
 
 /**
  * @openapi
  * /api/v1/jugadores/mercado:
  *   get:
+ *     security:
+ *      - BearerAuth: []
  *     tags:
  *     - "Jugadores"
  *     summary: Devuelve los jugadores del mercado
@@ -254,6 +258,8 @@ router.get('/jugadores/mercado', jugadoresController.getJugadoresMercado);
  * @openapi
  * /api/v1/jugadores/{id}:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *     - "Jugadores"
  *     summary: Devuelve una lista de jugadores basado en un id.
@@ -361,6 +367,8 @@ router.get('/jugadores/:id', jugadoresController.getJugadorById);
  * @openapi
  * /api/v1/mejorFichaje:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *     - "Jugadores"
  *     summary: Devuelve el jugador considerado mejor fichaje esa jornada.
@@ -462,6 +470,8 @@ router.get('/mejorFichaje', jugadoresController.getMejorFichaje);
  * @openapi
  * /api/v1/equipo/{nombreEquipo}:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *     - "Jugadores"
  *     summary: Devuelve los jugadores de un equipo
