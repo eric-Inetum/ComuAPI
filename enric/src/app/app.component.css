@@ -1,0 +1,67 @@
+/* Importa el tema de Material si no lo has hecho ya */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+/* CSS MIGUEL */
+
+.mat-grid-tile {
+  background-color: blue;
+}
+
+/* Estilos para el centro del cuadro de búsqueda */
+.mat-toolbar-row-center {
+  flex-grow: 1; /* Permite que el cuadro de búsqueda ocupe el espacio central */
+}
+/* Estilos para las imágenes pequeñas */
+.imagenes-pequenas {
+  max-width: 110px; /* Ancho máximo deseado */
+  max-height: 110px; /* Altura máxima deseada */
+  margin: 0 10px; /* Espaciado horizontal entre las imágenes */
+}
+
+/* Estilo para el título y el subrayado */
+.title-imagenes-pequenas {
+  text-align: center; /* Centra el texto horizontalmente */
+}
+
+.title-imagenes-pequenas span.underline {
+  display: block; /* Hace que el subrayado sea un elemento de bloque */
+  width: 50px; /* Ancho del subrayado */
+  height: 2px; /* Altura del subrayado */
+  background-color: #000; /* Color del subrayado */
+  margin: 0 auto; /* Centra el subrayado horizontalmente */
+  margin-top: 8px; /* Espacio entre el título y el subrayado */
+}
+
+.content{
+  background-color: #ffffff; /* Color del subrayado */
+
+}
+
+
+/*
+Para fixear la nvbar
+/* 
+.fixed-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+Estilos para la barra de herramientas fija */
+
+.mercado {
+  width: 327px;
+  height: 336px;
+  margin-left: 20%;
+  width: 200px; /* Ancho del div */
+  height: 100px; /* Altura del div */
+  background-color: #fff; /* Color de fondo del div */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Sombreado */
+  /* Puedes ajustar los valores de box-shadow según tus preferencias */
+}
+
+h1 {
+  margin-left: 20%;
+}

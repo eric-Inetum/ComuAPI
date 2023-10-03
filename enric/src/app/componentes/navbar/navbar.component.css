@@ -1,0 +1,20 @@
+/* Estilos para el contenedor sticky */
+.container {
+    position: sticky;
+    top: 0;
+    background-color: #235f97; /* Color de fondo */
+    display: flex;
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Estilos personalizados para el logo */
+.logo {
+    height: 60px; /* Ajusta la altura para que coincida con el botón del menú */
+    margin-right: 16px; /* Espacio entre el logo y el botón del menú */
+}
+
+/* Estilos para el subcomponente de búsqueda (app-barrabusqueda) */
+.toolbar-item {
+    text-align: center; /* Centra horizontalmente el contenido de la barra de búsqueda */
+}

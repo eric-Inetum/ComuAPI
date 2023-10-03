@@ -1,0 +1,10 @@
+/* Estilos para las imágenes pequeñas */
+.imagenes-pequenas {
+    max-width: 110px; /* Ancho máximo deseado */
+    max-height: 110px; /* Altura máxima deseada */
+    margin: 0 10px; /* Espaciado horizontal entre las imágenes */
+}
+
+.imagenes-pequenas:hover{
+    transform: scale(1.1);
+}

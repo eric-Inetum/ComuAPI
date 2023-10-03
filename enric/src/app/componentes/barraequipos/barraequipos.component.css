@@ -1,0 +1,15 @@
+.escudos {
+    border: solid #ECECEC 1px;
+    border-radius: 10px;
+    margin-left: 370px;
+    height: 53px;
+    margin-top: 12px;
+    width: 62%;
+    background-color: #ECECEC;
+  }
+  
+  .escudo {
+    width: 44px;
+    margin-top: 4px;
+    margin-left: 20px;
+  }

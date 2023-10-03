@@ -1,0 +1,28 @@
+/* Estilos para el botón de imagen */
+.image-button {
+    background: none; /* Elimina el fondo del botón */
+    border: none; /* Elimina el borde del botón */
+    padding: 0; /* Elimina el relleno del botón */
+}
+
+/* Estilos personalizados para el botón del menú */
+.menu-button {
+    padding-right: 16px; /* Espacio entre el botón y el borde derecho de la barra de navegación */
+}
+
+/* Estilos para el icono del menú */
+.menu-icon {
+    width: 45px; /* Ancho de la imagen del botón del menú */
+    height: 40px; /* Altura de la imagen del botón del menú */
+}
+
+/* Estilos para los elementos del menú */
+.mat-menu-item {
+    color: white; /* Color del texto de las opciones */
+    background-color: blue; /* Color de fondo azul */
+}
+
+/* Estilos para los elementos del menú activos (si es necesario) */
+.mat-menu-item:hover {
+    background-color: darkblue; /* Color de fondo al pasar el ratón por encima */
+}

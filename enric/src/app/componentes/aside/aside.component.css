@@ -1,0 +1,14 @@
+
+aside {
+    width: 320px;
+    height:100%;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: fixed;
+    pointer-events: all;
+    float: left;
+    font-style: italic;
+    background-color: lightgray;
+    z-index: 100;
+  }

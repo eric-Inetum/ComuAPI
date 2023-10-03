@@ -1,0 +1,26 @@
+/* Estilos para el cuadro de búsqueda */
+.search-box {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    border-radius: 20px; /* Bordes redondeados */
+    background-color: #fff; /* Color de fondo blanco */
+    padding: 4px 8px; /* Espaciado interno */
+  }
+  
+  /* Estilos para el campo de búsqueda */
+  .search-input {
+    border: none;
+    outline: none;
+    width: 500px; /* Establece el ancho deseado */
+  }
+  
+  /* Estilos para el botón de búsqueda */
+  .search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+  }
+  

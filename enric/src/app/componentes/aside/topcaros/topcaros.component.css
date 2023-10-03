@@ -1,0 +1,18 @@
+/* Estilo para el título y el subrayado */
+.title-imagenes-pequenas {
+    text-align: center; /* Centra el texto horizontalmente */
+  }
+  
+  .title-imagenes-pequenas span.underline {
+    display: block; /* Hace que el subrayado sea un elemento de bloque */
+    width: 50px; /* Ancho del subrayado */
+    height: 2px; /* Altura del subrayado */
+    background-color: #000; /* Color del subrayado */
+    margin: 0 auto; /* Centra el subrayado horizontalmente */
+    margin-top: 8px; /* Espacio entre el título y el subrayado */
+  }
+  
+  .content{
+    background-color: #ffffff; /* Color del subrayado */
+  
+  }
