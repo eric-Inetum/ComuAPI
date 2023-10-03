@@ -29,7 +29,7 @@ app.use(cors());
 V1SwaggerDocs(app, PORT);
 
 // Routes
-//
+//funcional
 app.use('/api/v1', postBearerKey);
 app.use(checkJwt);//usamos el authentication client credentials para las siguientes rutas
 app.use('/api/v1', getJugadoresRoutes);
