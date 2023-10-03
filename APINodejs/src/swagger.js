@@ -6,20 +6,22 @@ const path = require('path');
 const options = {
   definition: {
     openapi: "3.0.0",
-    info: { title: "ComuAPI",
-    description: "Una api creada para conseguir información de jugadores de futbol",
-    version: "1.0.0" },
-  },
-  components: {
-    securitySchemes: {
-      BearerAuth: {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT'
+    info: {
+      title: "ComuAPI",
+      description: "Una api creada para conseguir información de jugadores de futbol",
+      version: "1.0.0"
+    },
+    security: [ { BearerAuth: [] } ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT'
+        }
       }
     }
   },
-  security: [ { bearerAuth: [] } ],
   tags:[
     {
       name: "Jugadores",

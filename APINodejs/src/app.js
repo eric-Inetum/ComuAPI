@@ -13,10 +13,9 @@ const postBearerKey = require('./routes/bearer_key.js');
 const PORT = process.env.PORT || 80;
 
 // Middlewares
-//app.use(limiter); // Apply limiter first
+app.use(limiter); // Aplicamos el limiter
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-app.use(cors());
 app.get('/authorized', function (req, res) {
     res.send('Secured Resource');
 });
@@ -24,6 +23,7 @@ app.use((err, req, res, next)=>{
     console.error(err.stack);
     res.status(500).json({ error: 'Error en el middleware de manejo de errores'})
 });
+app.use(cors());
 
 // Swagger initialization - after other middlewares but before routes
 V1SwaggerDocs(app, PORT);
@@ -31,7 +31,7 @@ V1SwaggerDocs(app, PORT);
 // Routes
 //
 app.use('/api/v1', postBearerKey);
-//app.use(checkJwt);
+app.use(checkJwt);//usamos el authentication client credentials para las siguientes rutas
 app.use('/api/v1', getJugadoresRoutes);
 app.use('/api/v1', getHistorialRoutes);
 app.use('/api/v1', updateRoutes);
