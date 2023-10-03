@@ -4,7 +4,7 @@ const jugadoresController = require('../controllers/update_controller.js');
 
 /**
  * @openapi
- * /api/v1/jugadores/{id}/actualizar:
+ * /api/v1/jugadores/{id_jugador}/actualizar:
  *   patch:
  *     security:
  *       - BearerAuth: []
@@ -12,6 +12,13 @@ const jugadoresController = require('../controllers/update_controller.js');
  *     - "Gestion de jugadores"
  *     summary: Actualiza un jugador a traves de su id.
  *     description: Actualiza un jugador a traves de su id.
+ *     parameters:
+ *       - name: id_jugador
+ *         in: path
+ *         description: ID del jugador a buscar
+ *         required: true
+ *         schema: 
+ *           type: integer
  *     responses:
  *       '201':
  *         description: Registro guardado con exito
@@ -232,8 +239,8 @@ router.post("/jugadores/insertar", jugadoresController.postJugador);
  *       - BearerAuth: []
  *     tags:
  *     - "Gestion de jugadores"
- *     summary: Crea todos los jugadores en la tabla de jugadores en la base de datos a traves del JSON del Webscraping.
- *     description: Crea todos los jugadores en la base de datos a traves del JSON del Webscraping.
+ *     summary: Inserta los jugadores a traves del JSON del Webscraping.
+ *     description: Crea todos los jugadores en la tabla de jugadores en la base de datos a traves del JSON del Webscraping.
  *     responses:
  *       '201':
  *         description: Registro guardado con exito

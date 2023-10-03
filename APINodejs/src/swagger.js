@@ -24,6 +24,10 @@ const options = {
   },
   tags:[
     {
+      name:"Bearer Key",
+      description: "Proporciona la clave para poder hacer consultas"
+    },
+    {
       name: "Jugadores",
       description: "Operaciones relacionadas con jugadores",
     },
@@ -34,10 +38,6 @@ const options = {
     {
       name:"Gestion de jugadores",
       description: "Añadir un nuevo jugador"
-    },
-    {
-      name:"Bearer Key",
-      description: "Proporciona la clave para poder hacer consultas"
     }
   ],
   apis: [
@@ -62,7 +62,7 @@ const swaggerDocs = (app, port) => {
     res.send(swaggerSpec);
   });
   console.log(
-    `Version 1 Docs are available on http://10.228.64.234:${port}/api/v1/docs`
+    `Version 1 Docs are available on http://localhost:${port}/api/v1/docs`
     );
   };
   
