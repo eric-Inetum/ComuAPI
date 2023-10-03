@@ -5,14 +5,15 @@
     justify-content: center; /* Centra horizontalmente */
     border-radius: 20px; /* Bordes redondeados */
     background-color: #fff; /* Color de fondo blanco */
-    padding: 4px 8px; /* Espaciado interno */
+    padding: 2% 4%; /* Espaciado interno */
+    width: 300%;
   }
   
   /* Estilos para el campo de búsqueda */
   .search-input {
     border: none;
     outline: none;
-    width: 500px; /* Establece el ancho deseado */
+    width: 100%; /* Establece el ancho deseado */
   }
   
   /* Estilos para el botón de búsqueda */

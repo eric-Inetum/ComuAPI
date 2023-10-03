@@ -2,19 +2,23 @@
 .container {
     position: sticky;
     top: 0;
+}
+mat-toolbar {
     background-color: #235f97; /* Color de fondo */
     display: flex;
+    flex-direction: row;
     justify-content: space-between; /* Espacio entre elementos */
     align-items: center; /* Centra verticalmente */
 }
 
+.toolbar-left {
+    margin-left: 2.5%;
+}
 /* Estilos personalizados para el logo */
 .logo {
-    height: 60px; /* Ajusta la altura para que coincida con el botón del menú */
-    margin-right: 16px; /* Espacio entre el logo y el botón del menú */
+    max-width: 55%; /* La imagen no será más ancha que su contenedor */
 }
 
-/* Estilos para el subcomponente de búsqueda (app-barrabusqueda) */
-.toolbar-item {
-    text-align: center; /* Centra horizontalmente el contenido de la barra de búsqueda */
+.toolbar-center {
+    margin-left: -40%;
 }

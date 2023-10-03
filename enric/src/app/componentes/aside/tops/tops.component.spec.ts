@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToppuntosComponent } from './toppuntos.component';
+import { TopsComponent } from './tops.component';
 
-describe('ToppuntosComponent', () => {
-  let component: ToppuntosComponent;
-  let fixture: ComponentFixture<ToppuntosComponent>;
+describe('TopsComponent', () => {
+  let component: TopsComponent;
+  let fixture: ComponentFixture<TopsComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ToppuntosComponent]
+      declarations: [TopsComponent]
     });
-    fixture = TestBed.createComponent(ToppuntosComponent);
+    fixture = TestBed.createComponent(TopsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

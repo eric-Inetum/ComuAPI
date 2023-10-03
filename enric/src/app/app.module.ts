@@ -18,8 +18,6 @@ import { BarrabusquedaComponent } from './componentes/navbar/barrabusqueda/barra
 import { BtnmenuComponent } from './componentes/navbar/btnmenu/btnmenu.component';
 import { AsideComponent } from './componentes/aside/aside.component';
 import { CalendarioComponent } from './componentes/aside/calendario/calendario.component';
-import { ToppuntosComponent } from './componentes/aside/toppuntos/toppuntos.component';
-import { TopcarosComponent } from './componentes/aside/topcaros/topcaros.component';
 import { CartapequenaComponent } from './componentes/cartas/cartapequena/cartapequena.component';
 import { CartamedianaComponent } from './componentes/cartas/cartamediana/cartamediana.component';
 import { CartagrandeComponent } from './componentes/cartas/cartagrande/cartagrande.component';
@@ -27,6 +25,7 @@ import { BarraequiposComponent } from './componentes/barraequipos/barraequipos.c
 import { MejorfichajeComponent } from './componentes/mejorfichaje/mejorfichaje.component';
 import { MercadoComponent } from './componentes/mercado/mercado.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { TopsComponent } from './componentes/aside/tops/tops.component';
 
 
 @NgModule({
@@ -36,8 +35,6 @@ import { FooterComponent } from './componentes/footer/footer.component';
     BarrabusquedaComponent,
     BtnmenuComponent,
     AsideComponent,
-    ToppuntosComponent,
-    TopcarosComponent,
     CartapequenaComponent,
     CartamedianaComponent,
     CartagrandeComponent,
@@ -45,7 +42,8 @@ import { FooterComponent } from './componentes/footer/footer.component';
     MejorfichajeComponent,
     MercadoComponent,
     FooterComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    TopsComponent
   ],
   imports: [
     BrowserModule,
