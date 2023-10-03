@@ -29,10 +29,8 @@ const getTodosJugadores = (req, res, next) => {
 //Funcion para obtener campos seleccionados de un; jugador por id
 const getJugadorById = (req, res) => {
     const id = req.params.id;
-    let campos = req.query.campos;
-    if (!campos) campos = "*";
     const values = [id];
-    client.query(queries.getJugadorByID(campos), values, (error, results) => {
+    client.query(queries.getJugadorByID, values, (error, results) => {
         if (error) {
             console.error('Error executing PostgreSQL query:', error);
             res.status(500).json({ error: 'No se encuentra el jugador' });
@@ -42,6 +40,7 @@ const getJugadorById = (req, res) => {
         res.status(200).json({ jugador });
     });
 };
+
 module.exports = {
     getTodosJugadores,
     getJugadorById
