@@ -1,6 +1,6 @@
 const db = require("../db_config/db.js");
 const queries = require('../queries/queries.js');
-const client = db.getClientForPrueba();
+const client = db.getClientForGetProd();
 client.connect();
 
 //Funcion para obtener los registros de todas las fechas del historial a traves del id del jugador

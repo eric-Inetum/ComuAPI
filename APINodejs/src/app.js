@@ -3,7 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { limiter, jwtCheck, checkJwt } = require('./security.js')
+const { customLimiter, jwtCheck, checkJwt } = require('./security.js')
 const getJugadoresRoutes = require('./routes/player_routes.js');
 const getHistorialRoutes = require("./routes/historial_routes.js");
 const updateRoutes = require("./routes/update_routes.js");
@@ -13,7 +13,6 @@ const postBearerKey = require('./routes/bearer_key.js');
 const PORT = process.env.PORT || 80;
 
 // Middlewares
-app.use(limiter); // Aplicamos el limiter
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.get('/authorized', function (req, res) {
@@ -30,11 +29,11 @@ V1SwaggerDocs(app, PORT);
 
 // Routes
 //funcional
-app.use('/api/v1', postBearerKey);
-app.use(checkJwt);//usamos el authentication client credentials para las siguientes rutas
-app.use('/api/v1', getJugadoresRoutes);
-app.use('/api/v1', getHistorialRoutes);
-app.use('/api/v1', updateRoutes);
+app.use('/api/v1',customLimiter, postBearerKey);
+//app.use(checkJwt);//usamos el authentication client credentials para las siguientes rutas
+app.use('/api/v1',customLimiter, getJugadoresRoutes);
+app.use('/api/v1',customLimiter, getHistorialRoutes);
+app.use('/api/v1',customLimiter, updateRoutes);
 
 
 
