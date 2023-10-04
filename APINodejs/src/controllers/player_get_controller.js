@@ -1,6 +1,6 @@
 const db = require("../db_config/db.js");
 const queries = require('../queries/queries.js');
-const client = db.getClientForPrueba();
+const client = db.getClientForGetProd();
 client.connect();
 
 // Función para obtener todos los jugadores
