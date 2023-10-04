@@ -10,7 +10,7 @@ const updateRoutes = require("./routes/update_routes.js");
 const { swaggerDocs: V1SwaggerDocs } = require("./swagger");
 const postBearerKey = require('./routes/bearer_key.js');
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 81;
 
 // Middlewares
 app.use(bodyParser.json());
