@@ -3,7 +3,6 @@ const router = express.Router();
 const bearerKeyController = require('../controllers/bearer_key_controller.js');
 
 
-
 /**
  * @openapi
  * /api/v1/token:

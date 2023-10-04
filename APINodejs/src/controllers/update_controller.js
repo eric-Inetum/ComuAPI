@@ -7,17 +7,18 @@ client.connect();
 //Funcion para actualizar los datos de un jugador
 const patchJugador = (req, res, next) => {
     const id = req.params.id;
+    console.log(req.body);
     const {
         propietario, equipo, posicion, titular, partidos_jugados, ranking_general,
         mejor_fichaje, media_sofascore, media_puntos, total_puntos, puntos_buenos, oferta_minima,
         valor_mercado, valor_mercado_max, valor_mercado_min, ranking_equipo, ranking_posicion,
-        tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion
+        tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion//, url_imagen, url_imagen_equipo
     } = req.body;
     const values = [
         propietario, equipo, posicion, titular, partidos_jugados, ranking_general,
         mejor_fichaje, media_sofascore, media_puntos, total_puntos, puntos_buenos, oferta_minima,
         valor_mercado, valor_mercado_max, valor_mercado_min, ranking_equipo, ranking_posicion,
-        tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion, id
+        tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion, id//, url_imagen, url_imagen_equipo
     ];
     client.query(queries.patchJugador, values, error => {
         if (error) {

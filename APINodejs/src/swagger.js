@@ -6,24 +6,28 @@ const path = require('path');
 const options = {
   definition: {
     openapi: "3.0.0",
-    info: {title: "ComuAPI",
-    description: "[ BaseUrl: http://localhost/api/v1 ] Api creada para conseguir información de jugadores de futbol",
-    version: "1.0.0",},
-    security: [ { BearerAuth: [] } ],
+    info: { title: "ComuAPI",
+    description: '[ BaseUrl: localhost/api/v1 ]',
+    version: "1.0.0" },
     externalDocs: {
       description: "/docs.json",
-      url: `http://localhost:$/api/v1/docs.json`},
-    components: {
-      securitySchemes: {
-        BearerAuth: {
-          type: 'http',
-          scheme: 'bearer',
-          bearerFormat: 'JWT'
-        }
+      url: "http://localhost/api/v1/docs.json"}
+  },
+  components: {
+    securitySchemes: {
+      BearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT'
       }
     }
   },
+  security: [ { bearerAuth: [] } ],
   tags:[
+    {
+      name:"Bearer Key",
+      description: "Proporciona la clave para poder hacer consultas"
+    },
     {
       name: "Jugadores",
       description: "Operaciones relacionadas con jugadores",
@@ -35,10 +39,6 @@ const options = {
     {
       name:"Gestion de jugadores",
       description: "Añadir un nuevo jugador"
-    },
-    {
-      name:"Bearer Key",
-      description: "Proporciona la clave para poder hacer consultas"
     }
   ],
   apis: [

@@ -1,14 +1,12 @@
 const db = require("../db_config/db.js");
 const queries = require('../queries/queries.js');
-const client = db.getClientForGetProd();
+const client = db.getClientForPrueba();
 client.connect();
 
 //Funcion para obtener los registros de todas las fechas del historial a traves del id del jugador
 const getHistorialByID = (req, res) => {
     const id = req.params.id;
-    let dias = req.query.dias;
-    if (!dias) dias = 1;
-    const values = [id, dias];
+    const values = [id];
     client.query(queries.getHistorialByID, values, (error, results) => {
         if (error) {
             console.error("Error executing MySQL query:", error);
