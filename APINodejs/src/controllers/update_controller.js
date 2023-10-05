@@ -3,22 +3,20 @@ const queries = require("../queries/queries.js")
 const client = db.getClientForPrueba();
 const fs = require('fs');
 client.connect();
-
 //Funcion para actualizar los datos de un jugador
 const patchJugador = (req, res, next) => {
     const id = req.params.id;
-    console.log(req.body);
     const {
         propietario, equipo, posicion, titular, partidos_jugados, ranking_general,
         mejor_fichaje, media_sofascore, media_puntos, total_puntos, puntos_buenos, oferta_minima,
         valor_mercado, valor_mercado_max, valor_mercado_min, ranking_equipo, ranking_posicion,
-        tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion//, url_imagen, url_imagen_equipo
+        tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion
     } = req.body;
     const values = [
         propietario, equipo, posicion, titular, partidos_jugados, ranking_general,
         mejor_fichaje, media_sofascore, media_puntos, total_puntos, puntos_buenos, oferta_minima,
         valor_mercado, valor_mercado_max, valor_mercado_min, ranking_equipo, ranking_posicion,
-        tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion, id//, url_imagen, url_imagen_equipo
+        tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion, id
     ];
     client.query(queries.patchJugador, values, error => {
         if (error) {
@@ -42,6 +40,8 @@ const postJugador = (req, res, next) => {
         ranking_equipo, ranking_posicion, media_sofascore, media_puntos, total_puntos, valor_mercado, valor_mercado_max,
         valor_mercado_min, tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion
     ]
+    console.log(req.body)
+    console.log(values)
     client.query(queries.postJugador, values, error => {
         if (error) {
             console.error("Error executing MySQL query:", error);
@@ -50,7 +50,6 @@ const postJugador = (req, res, next) => {
         }
         res.json({ message: 'Jugador añadido' });
     });
-
 };
 //Funcion para insertar todos los jugadores en  la tabla de jugadores
 const postJugadores = (req, res, next) => {
@@ -107,7 +106,6 @@ const postJugadores = (req, res, next) => {
         }
     });
 };
-
 //Funcion para insertar los datos de los jugadores en la tabla de historial
 const insertHistorial = (req, res) => {
     const date = new Date();
@@ -120,14 +118,12 @@ const insertHistorial = (req, res) => {
     formattedDate += month + "-";
     if (day < 10) formattedDate += "0";
     formattedDate += day;
-
     client.query(queries.getJugadores("*"), (error1, results) => {
         if (error1) {
             console.error("Error executing PostgreSQL query:", error1);
             res.status(500).json({ error1: "Error interno del servidor" });
             return;
         }
-
         const jugadores = results.rows;
         const jugadoresLength = jugadores.length;
         for (let index = 0; index < jugadoresLength; index++) {
@@ -160,11 +156,9 @@ const insertHistorial = (req, res) => {
         res.status(200).json({ "message": "Jugadores añadidos al historial" });
     });
 };
-
 module.exports = {
     patchJugador,
     postJugador,
     postJugadores,
     insertHistorial
 };
-

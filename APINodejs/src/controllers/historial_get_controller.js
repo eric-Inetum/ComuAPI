@@ -17,11 +17,9 @@ const getHistorialByID = (req, res) => {
         jugadores.forEach(jugador => {
             jugador.fecha_registro = jugador.fecha_registro.toISOString().substring(0, 10);
         })
-
         res.status(200).json({ jugadores });
     });
 };
-
 const getHistorialByDia = (req, res) => {
     const fecha = req.params.fecha.split("-");
     let year = parseInt(fecha[0])
@@ -31,7 +29,6 @@ const getHistorialByDia = (req, res) => {
         res.status(400)
     }
     day++;
-
     if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
         if (day > 31) {
             day = 1;
@@ -64,7 +61,6 @@ const getHistorialByDia = (req, res) => {
         formattedDate += month + "-";
     if (day < 10) formattedDate += "0";
         formattedDate += day;
-
     let query = req.query;
     let where = "";
     if (Object.keys(query).length > 0) {
@@ -85,11 +81,9 @@ const getHistorialByDia = (req, res) => {
         jugadores.forEach(jugador => {
             jugador.fecha_registro = jugador.fecha_registro.toISOString().substring(0, 10);
         })
-
         res.status(200).json({ jugadores });
     });
 };
-
 module.exports = {
     getHistorialByID,
     getHistorialByDia

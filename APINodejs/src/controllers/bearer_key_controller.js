@@ -23,7 +23,6 @@ const postKey = (req, res) => {
             console.error(error);
             return res.status(500).json({ error: 'Failed to fetch bearer token.' });
         }
-        console.log("Auth0 Response:", response.statusCode, body);
         res.json(JSON.parse(body));
     });
 };

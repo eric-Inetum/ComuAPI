@@ -6,28 +6,23 @@ const path = require('path');
 const options = {
   definition: {
     openapi: "3.0.0",
-    info: { title: "ComuAPI",
-    description: '[ BaseUrl: localhost/api/v1 ]',
-    version: "1.0.0" },
-    externalDocs: {
-      description: "/docs.json",
-      url: "http://localhost/api/v1/docs.json"}
-  },
-  components: {
-    securitySchemes: {
-      BearerAuth: {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT'
+    info: {
+      title: "ComuAPI",
+      description: "Una api creada para conseguir información de jugadores de futbol",
+      version: "1.0.0"
+    },
+    security: [ { BearerAuth: [] } ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT'
+        }
       }
     }
   },
-  security: [ { bearerAuth: [] } ],
   tags:[
-    {
-      name:"Bearer Key",
-      description: "Proporciona la clave para poder hacer consultas"
-    },
     {
       name: "Jugadores",
       description: "Operaciones relacionadas con jugadores",
@@ -39,6 +34,10 @@ const options = {
     {
       name:"Gestion de jugadores",
       description: "Añadir un nuevo jugador"
+    },
+    {
+      name:"Bearer Key",
+      description: "Proporciona la clave para poder hacer consultas"
     }
   ],
   apis: [
@@ -63,7 +62,7 @@ const swaggerDocs = (app, port) => {
     res.send(swaggerSpec);
   });
   console.log(
-    `Version 1 Docs are available on http://localhost:${port}/api/v1/docs`
+    `Version 1 Docs are available on http://10.228.64.253:${port}/api/v1/docs`
     );
   };
   

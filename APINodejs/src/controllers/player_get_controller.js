@@ -1,10 +1,9 @@
 const db = require("../db_config/db.js");
 const queries = require('../queries/queries.js');
-const client = db.getClientForGetProd();
+const client = db.getClientForPrueba();
 client.connect();
 
 // Función para obtener todos los jugadores
-
 const getTodosJugadores = (req, res, next) => {
     let query = req.query;
     let where = "";
@@ -25,7 +24,6 @@ const getTodosJugadores = (req, res, next) => {
         res.status(200).json({ jugadores });
     });
 };
-
 //Funcion para obtener campos seleccionados de un; jugador por id
 const getJugadorById = (req, res) => {
     const id = req.params.id;

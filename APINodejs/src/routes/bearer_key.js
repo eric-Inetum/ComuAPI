@@ -10,6 +10,7 @@ const bearerKeyController = require('../controllers/bearer_key_controller.js');
  *     tags:
  *       - "Bearer Key"
  *     summary: Proporciona la clave de acceso a la API
+ *     description: La clave de acceso tiene que incluirse en el pop-up Authorize.
  *     responses:
  *       200:
  *         description: Bearer key successfully provided.
@@ -25,6 +26,4 @@ const bearerKeyController = require('../controllers/bearer_key_controller.js');
  *         description: Internal server error.
  */
 router.post('/token', bearerKeyController.postKey);
-
-
 module.exports = router;

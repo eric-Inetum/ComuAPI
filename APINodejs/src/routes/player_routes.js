@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const jugadoresController = require('../controllers/player_get_controller.js');
 const checkJwt = require('../security.js');
-
-
 /**
  * @openapi
  * /api/v1/jugadores:
@@ -168,7 +166,6 @@ const checkJwt = require('../security.js');
  *         description: Criterio de busqueda incorrecto.
  */
 router.get('/jugadores', jugadoresController.getTodosJugadores);
-
 /**
  * @openapi
  * /api/v1/jugadores/{id_jugador}:
@@ -274,6 +271,4 @@ router.get('/jugadores', jugadoresController.getTodosJugadores);
  *         description: Internal server error.
  */
 router.get('/jugadores/:id', jugadoresController.getJugadorById);
-
-
 module.exports = router;
