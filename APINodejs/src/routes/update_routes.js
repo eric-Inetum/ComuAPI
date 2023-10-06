@@ -220,7 +220,7 @@ router.post("/jugadores/insertar", jugadoresController.postJugador);
  *     tags:
  *     - "Gestion de jugadores"
  *     summary: Inserta los jugadores a traves del JSON del Webscraping.
- *     description: Crea todos los jugadores en la tabla de jugadores en la base de datos a traves del JSON del Webscraping. Debido a esto no es necesario pasarle un body.
+ *     description: Crea todos los jugadores en la tabla de jugadores en la base de datos a traves del JSON del Webscraping. Debido a esto no es necesario pasarle un body desde el swagger.
  *     responses:
  *       '201':
  *         description: Registro guardado con exito
@@ -241,7 +241,7 @@ router.post("/jugadores", jugadoresController.postJugadores);
  *     tags:
  *     - "Gestion de jugadores"
  *     summary: Crea todos los jugadores en la tabla de historial en la base de datos a través del JSON del webscraping.
- *     description: Al hacer una llamada a este POST se hace una pre-request interna para obtener todos los datos de los jugadores y posteriormente insertarlos. Debido a esto no es necesario indicar un body.
+ *     description: Al hacer una llamada a este POST se hace una pre-request interna para obtener todos los datos de los jugadores y posteriormente insertarlos. Debido a esto no es necesario indicar un body desde el swagger.
  *     responses:
  *       '201':
  *         description: Registro guardado con exito

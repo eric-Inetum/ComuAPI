@@ -10,8 +10,8 @@ const checkJwt = require('../security.js');
  *       - BearerAuth: []
  *     tags:
  *     - "Jugadores"
- *     summary: Devuelve todos los jugadores de comunio.
- *     description: Devuelve una lista con todos los jugadores de comunio. Si se añaden parametros, puede devolver 1 o muchos jugadores.
+ *     summary: Devuelve todos los jugadores de comunio y comuniate.
+ *     description: Devuelve una lista con todos los jugadores de comunio y comuniate. Si se añaden parametros, puede devolver 1 o muchos jugadores.
  *     parameters:
  *       - name: nombre
  *         in: query
@@ -43,6 +43,12 @@ const checkJwt = require('../security.js');
  *         required: false
  *         schema:
  *           type: boolean
+ *       - name: ranking_general
+ *         in: query
+ *         description: Filtrar por posicion en el ranking general del jugador.
+ *         required: false
+ *         schema:
+ *           type: integer
  *       - name: mejor_fichaje
  *         in: query
  *         description: Filtrar por mejor fichaje del mercado actual.
@@ -55,12 +61,24 @@ const checkJwt = require('../security.js');
  *         required: false
  *         schema:
  *           type: string
- *       - name: ranking_general
+ *       - name: valor_mercado
  *         in: query
- *         description: Filtrar por posicion en el ranking general del jugador.
+ *         description: Filtrar por el valor de mercado del jugador (En el caso de querer buscar jugadores con valor de mercado por encima o por debajo de una cifra concreta, usar greaterThan_cifra y lowerThan_cifra respectivamente).
  *         required: false
  *         schema:
- *           type: integer
+ *           type: string
+ *       - name: valor_mercado_max
+ *         in: query
+ *         description: Filtrar por el valor de mercado de maximo del jugador (En el caso de querer buscar jugadores con valor de mercado maximo por encima o por debajo de una cifra concreta, usar greaterThan_cifra y lowerThan_cifra respectivamente).
+ *         required: false
+ *         schema:
+ *           type: string
+ *       - name: valor_mercado_min
+ *         in: query
+ *         description: Filtrar por el valor de mercado minimo del jugador (En el caso de querer buscar jugadores con valor de mercado minimo por encima o por debajo de una cifra concreta, usar greaterThan_cifra y lowerThan_cifra respectivamente).
+ *         required: false
+ *         schema:
+ *           type: string
  *       - name: ranking_equipo
  *         in: query
  *         description: Filtrar por posicion en el ranking equipo del jugador.

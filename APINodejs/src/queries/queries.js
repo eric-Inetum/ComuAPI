@@ -8,25 +8,58 @@ const postJugador = "INSERT INTO jugadores (id_jugador, nombre, propietario, equ
 const postJugadores = "INSERT INTO jugadores (id_jugador, nombre, propietario, equipo, posicion, titular, partidos_jugados, ranking_general, ranking_equipo, ranking_posicion, mejor_fichaje, media_sofascore, media_puntos, total_puntos, puntos_buenos, oferta_minima, valor_mercado, valor_mercado_max, valor_mercado_min, tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha, lesion) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22);"
 const insertHistorial = "INSERT INTO historial_jugadores (id_jugador, nombre, fecha_registro, equipo, posicion, titular, partidos_jugados, ranking_general, ranking_equipo, ranking_posicion, media_sofascore, media_puntos, total_puntos, valor_mercado, tarjeta_amarilla, tarjeta_roja, doble_tarjeta_amarilla, racha) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18);";
 
+
+// function constructWhereStatement(query) {
+//     where = "WHERE ";
+//     for (const key in query) {
+//         if (query[key] == "null") {
+//             where += key + " IS NULL";
+//         } else if (query[key] == "notNull") {
+//             where += key + " IS NOT NULL";
+//         } else if (query[key].substring(0, 10) == "lowerThan_") {
+//             where += key + " < '" + query[key].substring(10, query[key].length) + "'";
+//         } else if (query[key].substring(0, 12) == "greaterThan_") {
+//             where += key + " > '" + query[key].substring(12, query[key].length) + "'";
+//         } else {
+//             where += key + " = '" + query[key] + "'";
+//         }
+//         where += " AND ";
+//     }
+//     where = where.substring(0, where.length - 5);
+//     return where;
+// }
+
 function constructWhereStatement(query) {
-    where = "WHERE ";
+    let whereConditions = [];
+    let values = [];
+    let counter = 1;
+
     for (const key in query) {
-        if (query[key] == "null") {
-            where += key + " IS NULL";
-        } else if (query[key] == "notNull") {
-            where += key + " IS NOT NULL";
-        } else if (query[key].substring(0, 10) == "lowerThan_") {
-            where += key + " < '" + query[key].substring(10, query[key].length) + "'";
-        } else if (query[key].substring(0, 12) == "greaterThan_") {
-            where += key + " > '" + query[key].substring(12, query[key].length) + "'";
+        if (query[key] === "null") {
+            whereConditions.push(`${key} IS NULL`);
+        } else if (query[key] === "notNull") {
+            whereConditions.push(`${key} IS NOT NULL`);
+        } else if (query[key].startsWith("lowerThan_")) {
+            whereConditions.push(`${key} < $${counter}`);
+            values.push(query[key].substring(10));
+            counter++;
+        } else if (query[key].startsWith("greaterThan_")) {
+            whereConditions.push(`${key} > $${counter}`);
+            values.push(query[key].substring(12));
+            counter++;
         } else {
-            where += key + " = '" + query[key] + "'";
+            whereConditions.push(`${key} = $${counter}`);
+            values.push(query[key]);
+            counter++;
         }
-        where += " AND ";
     }
-    where = where.substring(0, where.length - 5);
-    return where;
+
+    return {
+        whereClause: "WHERE " + whereConditions.join(" AND "),
+        values: values
+    };
 }
+
 
 module.exports = {
     constructWhereStatement,

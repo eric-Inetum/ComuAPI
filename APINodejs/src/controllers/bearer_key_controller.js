@@ -8,7 +8,6 @@ const postKey = (req, res) => {
         url: 'https://dev-1pgxzwyii2blucvg.eu.auth0.com/oauth/token',
         headers: { 
             'content-type': 'application/json',
-
     },
         body: JSON.stringify({
             client_id: process.env.AUTHO_CLIENT_ID,

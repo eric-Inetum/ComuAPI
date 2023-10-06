@@ -1,6 +1,6 @@
 const db = require("../db_config/db.js");
 const queries = require("../queries/queries.js")
-const client = db.getClientForPrueba();
+const client = db.getClientForPostProd();
 const fs = require('fs');
 client.connect();
 //Funcion para actualizar los datos de un jugador

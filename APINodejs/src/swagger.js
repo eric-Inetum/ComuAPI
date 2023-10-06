@@ -8,9 +8,12 @@ const options = {
     openapi: "3.0.0",
     info: {
       title: "ComuAPI",
-      description: "Una api creada para conseguir información de jugadores de futbol",
+      description: "Una api creada para conseguir información de jugadores de futbol registrado en comunio y comuniate.<br><br>[ BaseUrl: localhost/api/v1 ]",
       version: "1.0.0"
     },
+    externalDocs: {
+      description: "/docs.json",
+      url: "http://localhost/api/v1/docs.json"},
     security: [ { BearerAuth: [] } ],
     components: {
       securitySchemes: {
