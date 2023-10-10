@@ -1,43 +1,7 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../database/dbconfig');
 
-//Get que devuelve el cliente de la bd de pruebas
-const sequelize = new Sequelize(
-    process.env.DB_DATABASE_PRUEBA,
-    process.env.DB_USER_PRUEBA,
-    process.env.DB_PASSWORD_PRUEBA,
-    {
-        host: process.env.DB_HOST,
-        dialect: 'postgres',
-        logging: false,
-        port: process.env.DB_PORT
-    }
-);
-
-class Jugador extends Model {
-    static async findAllCustom(options = {}) {
-        const modifiedOptions = {
-          ...options,
-          attributes: {
-            exclude: ['createdAt', 'updatedAt'],
-            ...options.attributes,
-          },
-        };
-        return super.findAll(modifiedOptions);
-    }
-
-    static async findOneCustom(options = {}) {
-        const modifiedOptions = {
-            ...options,
-            attributes: {
-                exclude: ['createdAt', 'updatedAt'],
-                ...options.attributes, 
-            },
-        };
-        return super.findOne(modifiedOptions);
-    }
-}
+class Jugador extends Model {}
 
 Jugador.init({
     id_jugador: {
@@ -116,7 +80,8 @@ Jugador.init({
 }, {
     sequelize,
     modelName: 'Jugador',
-    tableName: 'jugadores'
+    tableName: 'jugadores', 
+    timestamps: false
 });
 
 module.exports = Jugador;

@@ -30,6 +30,9 @@ HistorialJugador.init({
     fecha_registro: {
         type: DataTypes.DATE
     },
+    nombre: {
+        type: DataTypes.STRING
+    },
     equipo: {
         type: DataTypes.STRING
     },
@@ -77,8 +80,9 @@ HistorialJugador.init({
     },
 }, {
     sequelize,
-    modelName: 'Jugador',
-    tableName: 'jugadores'
+    modelName: 'HistorialJugador',
+    tableName: 'historial_jugadores',
+    timestamps: false
 });
 
 module.exports = HistorialJugador;
