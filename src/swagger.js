@@ -1,6 +1,10 @@
 const  swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
+
+const api_port = process.env.API_PORT;
+const db_host = process.env.DB_HOST;
 
 // Basic Meta Informations about our API
 const options = {
@@ -8,12 +12,12 @@ const options = {
     openapi: "3.0.0",
     info: {
       title: "ComuAPI",
-      description: "Una api creada para conseguir información de jugadores de futbol registrado en comunio y comuniate.<br><br>[ BaseUrl: localhost/api/v2 ]",
-      version: "1.0.0"
+      description: "Una api creada para conseguir información de jugadores de futbol registrado en comunio y comuniate. <br><br>El <b>Token</b> se pedira a traves de PostMan con las claves proporcionadas por los creadores <br><br>[ BaseUrl: http://" + db_host + ":" + api_port + "/api/v2 ]",
+      version: "2.0.0"
     },
     externalDocs: {
       description: "/docs.json",
-      url: "http://10.228.64.236:15333/api/v2/docs.json"},
+      url: "http://" + db_host + ":" + api_port + "/api/v2/docs.json"},
     security: [ { BearerAuth: [] } ],
     components: {
       securitySchemes: {
@@ -27,6 +31,10 @@ const options = {
   },
   tags:[
     {
+      name:"Autenticación",
+      description: "Proporciona la clave para poder hacer consultas"
+    },
+    {
       name: "Jugadores",
       description: "Operaciones relacionadas con jugadores",
     },
@@ -37,18 +45,12 @@ const options = {
     {
       name:"Gestion de jugadores",
       description: "Añadir un nuevo jugador"
-    },
-    {
-      name:"Bearer Key",
-      description: "Proporciona la clave para poder hacer consultas"
     }
   ],
   apis: [
     path.join(__dirname, 'app.js'),
-    path.join(__dirname, 'routes', 'player_routes.js'),
-    path.join(__dirname, 'routes', 'historial_routes.js'),
-    path.join(__dirname, 'routes', 'update_routes.js'),
-    path.join(__dirname, 'routes', 'bearer_key.js' )
+    path.join(__dirname, 'routers', 'jugadores_router.js'),
+    path.join(__dirname, 'routers', 'historial_router.js'),
   ],
 };
 
@@ -56,7 +58,7 @@ const options = {
 const swaggerSpec = swaggerJSDoc(options);
 
 // Function to setup our docs
-const swaggerDocs = (app, port) => {
+const swaggerDocs = (app) => {
   // Route-Handler to visit our docs
   app.use("/api/v2/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   // Make our docs in JSON format available
@@ -65,7 +67,7 @@ const swaggerDocs = (app, port) => {
     res.send(swaggerSpec);
   });
   console.log(
-    `Version 1 Docs are available on http://10.228.64.236:${port}/api/v1/docs`
+    `Version 2 Docs are available on http://` + db_host + `:` + api_port + `/api/v2/docs`
     );
   };
   

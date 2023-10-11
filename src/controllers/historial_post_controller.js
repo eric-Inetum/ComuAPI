@@ -18,8 +18,9 @@ async function insertHistorial(req, res, next) {
         for (let index = 0; index < jugadores.length; index++) {
             const body = jugadores[index].dataValues;
             const values = {
-                nombre: body.nombre,
+                id_jugador: body.id_jugador,
                 fecha_registro: formattedDate,
+                nombre: body.nombre,
                 equipo: body.equipo,
                 posicion: body.posicion,
                 titular: body.titular,
@@ -36,9 +37,9 @@ async function insertHistorial(req, res, next) {
                 doble_tarjeta_amarilla: body.doble_tarjeta_amarilla,
                 racha: body.racha
             }
-            const jugador_historial = await HistorialJugadores.create(jugadores[index].dataValues);
+            const jugador_historial = await HistorialJugadores.create(values);
         }
-        res.status(200).json({ jugador_historial });
+        res.status(200);
         next();
 
     } catch (error) {

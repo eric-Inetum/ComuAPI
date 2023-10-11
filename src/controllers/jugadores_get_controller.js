@@ -1,3 +1,4 @@
+const sequelize = require("../database/dbconfig");
 const Jugadores = require("../models/Jugador");
 const { Op } = require("sequelize");
 
@@ -46,9 +47,17 @@ async function getJugadores(req, res, next) {
 
 async function getJugadorOrdered(req, res, next) {
     const campo = req.params.campo;
+    const orden = req.params.orden.toUpperCase();
+    const columnasJugador = Object.keys(Jugadores.getAttributes());
+
     try {
+        if (!columnasJugador.includes(campo) || (orden !== 'DESC' && orden !== 'ASC')) {
+            return res.status(404).json({ error: "No se ha encontrado el campo u orden" });
+        }
         const jugador = await Jugadores.findAll({
-            order: [campo, 'DESC']
+            order: [
+                [sequelize.col(campo), orden]
+            ]
         });
 
         if (jugador === null) {
@@ -89,12 +98,14 @@ async function updateOrCreate(req, res, next) {
 
         if (jugador === null) {
             jugador = await Jugadores.create(datos);
+            res.status(200).json("Jugador creado");
             next();
 
         } else {
             jugador = await jugador.update(datos);
+            res.status(200).json("Jugador actualizado");
         }
-        res.status(200).json({ jugador });
+
 
     } catch (error) {
         console.error('Error:', error);

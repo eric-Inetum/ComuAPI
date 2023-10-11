@@ -5,19 +5,15 @@ const controller = require('../controllers/jugadores_get_controller');
  * @openapi
  * /api/v2/jugadores:
  *   get:
- *     security:
- *       - BearerAuth: []
  *     tags:
- *     - "Jugadores"
+ *       - "Jugadores"
  *     summary: Devuelve todos los jugadores de comunio y comuniate.
- *     description: Devuelve una lista con todos los jugadores de comunio y comuniate. Si se añaden parametros, puede devolver 1 o muchos jugadores.
+ *     description: Devuelve una lista con todos los jugadores de comunio y comuniate. Si se añaden parámetros, puede devolver 1 o muchos jugadores.
  *     parameters:
  *       - name: nombre
  *         in: query
  *         description: Filtrar por nombre del jugador.
  *         required: false
- *         schema:
- *           type: string
  *       - name: propietario
  *         in: query
  *         description: Filtrar por propietario actual del jugador.
@@ -99,26 +95,110 @@ const controller = require('../controllers/jugadores_get_controller');
  *     responses:
  *       200:
  *         description: Lista los jugadores.
- *         content:
+ *       500:
+ *         description: Internal server error.
+ *       400:
+ *         description: Criterio de búsqueda incorrecto.
+ */
+router.get("/", controller.getJugadores);
+
+/**
+ * @openapi
+ * /api/v2/jugadores/filtrar/{campo}/{orden}:
+ *   get:
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *     - "Jugadores"
+ *     summary: Devuelve la informacion todos los jugadores ordenados por parametro.
+ *     description: Devuelve la informacion todos los jugadores ordenados por parametro.
+ *     parameters:
+ *       - name: campo
+ *         in: path
+ *         description: El valor de este parametro puede ser cualquier campo de infromcaion del jugador.
+ *         required: true
+ *         schema: 
+ *           type: string
+ *       - name: orden
+ *         in: path
+ *         description: La opciones son asc o desc
+ *         required: true
+ *         schema: 
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Lista los jugadores.
+ *       500:
+ *         description: Internal server error.
+ */
+
+router.get("/filtrar/:campo/:orden", controller.getJugadorOrdered);
+
+/**
+ * @openapi
+ * /api/v2/jugadores/{id_jugador}:
+ *   get:
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *     - "Jugadores"
+ *     summary: Devuelve la informacion de un jugador..
+ *     description: Devuelve la informacion de un jugador buscado por su id de jugador.
+ *     parameters:
+ *       - name: id_jugador
+ *         in: path
+ *         description: ID del jugador a buscar
+ *         required: true
+ *         schema: 
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Lista los jugadores.
+ *       500:
+ *         description: Internal server error.
+ */
+router.get("/:id", controller.getJugadorPorId);
+
+/**
+ * @openapi
+ * /api/v2/jugadores:
+ *   post:
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *     - "Gestion de jugadores"
+ *     summary: Crea o actualiza un jugador.
+ *     description: Inserta a un jugador dentro de la base de datos si no existe, en caso contrario, actualiza el jugador. Es necesario que el id del jugador sea unico para que su inserción o actualizacion sea correcta.
+ *     responses:
+ *       '201':
+ *         description: Registro guardado con exito
+ *       '400':
+ *         description: Bad request. Error en la solicitud.
+ *       '500':
+ *         description: Error interno del servidor.
+ *       default:
+ *         description: Error no especificado
+ *     requestBody:
+ *       required: true
+ *       content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 jugadores:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
  *                       id_jugador:
  *                         type: integer
- *                         example: 1952
+ *                         example: 3333
  *                       nombre:
+ *                         type: string
  *                         example: "Joao Cancelo"
  *                       propietario:
+ *                         type: string
  *                         example: "Computer"
  *                       equipo:
+ *                         type: string
  *                         example: "Barcelona"
  *                       posicion:
+ *                         type: string
  *                         example: "DF"
  *                       titular:
  *                         type: boolean
@@ -174,17 +254,14 @@ const controller = require('../controllers/jugadores_get_controller');
  *                         type: integer
  *                         example: 0
  *                       racha:
+ *                         type: string
  *                         example: "Buena"
  *                       lesion:
+ *                         type: string
  *                         example: "NO"
  *       500:
- *         description: Internal server error.
- *       400:
- *         description: Criterio de busqueda incorrecto.
+ *         description: Internal
  */
-router.get("/jugadores", controller.getJugadores);
-router.get("/jugadores/:campo", controller.getJugadorOrdered);
-router.get("/jugadores/:id", controller.getJugadorPorId);
-router.post("/jugadores", controller.updateOrCreate);
+router.post("/", controller.updateOrCreate);
 
 module.exports = router;
