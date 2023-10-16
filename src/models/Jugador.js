@@ -1,7 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database/dbconfig');
+const HistorialJugador = require("./HistorialJugador");
 
-class Jugador extends Model {}
+class Jugador extends Model {
+}
 
 Jugador.init({
     id_jugador: {
@@ -39,9 +41,6 @@ Jugador.init({
         type: DataTypes.FLOAT
     },
     total_puntos: {
-        type: DataTypes.INTEGER
-    },
-    puntos_buenos: {
         type: DataTypes.INTEGER
     },
     oferta_minima: {
@@ -82,6 +81,15 @@ Jugador.init({
     modelName: 'Jugador',
     tableName: 'jugadores', 
     timestamps: false
+});
+
+Jugador.hasMany(HistorialJugador, {
+    foreignKey: 'id_jugador'
+});
+
+HistorialJugador.belongsTo(Jugador, {
+    foreignKey: 'id_jugador',
+    onDelete: 'CASCADE'
 });
 
 module.exports = Jugador;

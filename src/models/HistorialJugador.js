@@ -1,5 +1,6 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const path = require('path');
+const Jugador = require('./Jugador');
 require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 
 //Get que devuelve el cliente de la bd de pruebas
@@ -23,9 +24,6 @@ HistorialJugador.init({
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
-    id_jugador: {
-        type: DataTypes.INTEGER,
     },
     fecha_registro: {
         type: DataTypes.DATE

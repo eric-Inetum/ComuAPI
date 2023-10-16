@@ -104,38 +104,6 @@ router.get("/", controller.getJugadores);
 
 /**
  * @openapi
- * /api/v2/jugadores/filtrar/{campo}/{orden}:
- *   get:
- *     security:
- *       - BearerAuth: []
- *     tags:
- *     - "Jugadores"
- *     summary: Devuelve la informacion todos los jugadores ordenados por parametro.
- *     description: Devuelve la informacion todos los jugadores ordenados por parametro.
- *     parameters:
- *       - name: campo
- *         in: path
- *         description: El valor de este parametro puede ser cualquier campo de infromcaion del jugador.
- *         required: true
- *         schema: 
- *           type: string
- *       - name: orden
- *         in: path
- *         description: La opciones son asc o desc
- *         required: true
- *         schema: 
- *           type: string
- *     responses:
- *       200:
- *         description: Lista los jugadores.
- *       500:
- *         description: Internal server error.
- */
-
-router.get("/filtrar/:campo/:orden", controller.getJugadorOrdered);
-
-/**
- * @openapi
  * /api/v2/jugadores/{id_jugador}:
  *   get:
  *     security:
@@ -262,6 +230,5 @@ router.get("/:id", controller.getJugadorPorId);
  *       500:
  *         description: Internal
  */
-router.post("/", controller.updateOrCreate);
 
 module.exports = router;

@@ -3,8 +3,8 @@ const swaggerUi = require("swagger-ui-express");
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
+const api_host = process.env.API_HOST
 const api_port = process.env.API_PORT;
-const db_host = process.env.DB_HOST;
 
 // Basic Meta Informations about our API
 const options = {
@@ -12,12 +12,12 @@ const options = {
     openapi: "3.0.0",
     info: {
       title: "ComuAPI",
-      description: "Una api creada para conseguir información de jugadores de futbol registrado en comunio y comuniate. <br><br>El <b>Token</b> se pedira a traves de PostMan con las claves proporcionadas por los creadores <br><br>[ BaseUrl: http://" + db_host + ":" + api_port + "/api/v2 ]",
+      description: `Una api creada para conseguir información de jugadores de futbol registrado en comunio y comuniate. <br><br>El <b>Token</b> se pedira a traves de PostMan con las claves proporcionadas por los creadores <br><br>[ BaseUrl: http://${api_host}:${api_port}/api/v2 ]`,
       version: "2.0.0"
     },
     externalDocs: {
       description: "/docs.json",
-      url: "http://" + db_host + ":" + api_port + "/api/v2/docs.json"},
+      url: `http://${api_host}:${api_port}/api/v2/docs.json`},
     security: [ { BearerAuth: [] } ],
     components: {
       securitySchemes: {
@@ -67,7 +67,7 @@ const swaggerDocs = (app) => {
     res.send(swaggerSpec);
   });
   console.log(
-    `Version 2 Docs are available on http://` + db_host + `:` + api_port + `/api/v2/docs`
+    `Version 2 Docs are available on http://${api_host}:${api_port}/api/v2/docs`
     );
   };
   

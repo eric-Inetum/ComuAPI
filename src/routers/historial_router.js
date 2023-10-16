@@ -50,7 +50,7 @@ router.get('/:id', controller.getHistorialByID);
  *       500:
  *         description: Internal server error.
  */
-router.get("/fecha/:fecha", controller.getHistorialByDia);
+// router.get("/fecha/:fecha", controller.getHistorialByDia);
 
 /**
  * @openapi
@@ -72,6 +72,5 @@ router.get("/fecha/:fecha", controller.getHistorialByDia);
  *       default:
  *         description: Error no especificado
  */
-router.post("/", controller.insertHistorial);
 
 module.exports = router;
