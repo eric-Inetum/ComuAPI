@@ -92,40 +92,46 @@ const { Op } = require("sequelize");
 async function getHistorialByID(req, res, next) {
     const id = req.params.id;
     let whereClause = {};
+    let offsetValue = 0;
 
     const query = req.query;
-    whereClause[id_jugador] = {
+    whereClause['id_jugador'] = {
         [Op.eq]: id
     };
     if (Object.keys(query).length > 0) {
         for (const key in query) {
-            if (key == "id_jugador") {
-                res.status(400).json({ error: "Criterio de busqueda incorrecto" });
-            }
-            if (query[key] === "null") {
-                whereClause[key] = {
-                    [Op.is]: null
-                };
-            } else if (query[key] === "notNull") {
-                whereClause[key] = {
-                    [Op.not]: null
-                };
-            } else if (query[key].startsWith("lowerThan_")) {
-                whereClause[key] = {
-                    [Op.lt]: query[key]
-                };
-            } else if (query[key].startsWith("greaterThan_")) {
-                whereClause[key] = {
-                    [Op.gt]: query[key]
-                };
-            } else if(key == "fecha_registro") {
-                whereClause[key] = {
-                    [Op.eq]: getDate(req)
-                };
+            if (key == "pag") {
+                offsetValue = (query[key] - 1) * 28;
+
             } else {
-                whereClause[key] = {
-                    [Op.eq]: query[key]
-                };
+                if (key == "id_jugador") {
+                    res.status(400).json({ error: "Criterio de busqueda incorrecto" });
+                }
+                if (query[key] === "null") {
+                    whereClause[key] = {
+                        [Op.is]: null
+                    };
+                } else if (query[key] === "notNull") {
+                    whereClause[key] = {
+                        [Op.not]: null
+                    };
+                } else if (query[key].startsWith("lowerThan_")) {
+                    whereClause[key] = {
+                        [Op.lt]: query[key]
+                    };
+                } else if (query[key].startsWith("greaterThan_")) {
+                    whereClause[key] = {
+                        [Op.gt]: query[key]
+                    };
+                } else if (key == "fecha_registro") {
+                    whereClause[key] = {
+                        [Op.eq]: getDate(query[key])
+                    };
+                } else {
+                    whereClause[key] = {
+                        [Op.eq]: query[key]
+                    };
+                }
             }
         }
     }
@@ -133,7 +139,9 @@ async function getHistorialByID(req, res, next) {
     try {
         const historialJugadores = await HistorialJugadores.findAll({
             where: whereClause,
-        });
+            limit: 28, 
+            offset: offsetValue 
+        }, {include: Jugadores});
         res.status(200).json({ historialJugadores });
         next();
 
@@ -143,12 +151,12 @@ async function getHistorialByID(req, res, next) {
     }
 }
 
-function getDate(req){
-    const fecha = req.params.fecha.split("-");
+function getDate(req) {
+    const fecha = req.split("-");
     let year = parseInt(fecha[0])
     let month = parseInt(fecha[1])
     let day = parseInt(fecha[2])
-    if(year.length > 4 || month.length > 2 || day.length > 2 || day <= 0 || month <= 0 || year <= 0){
+    if (year.length > 4 || month.length > 2 || day.length > 2 || day <= 0 || month <= 0 || year <= 0) {
         res.status(400).json({ error: "Criterio de busqueda incorrecto" });
     }
     day++;

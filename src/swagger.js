@@ -12,12 +12,13 @@ const options = {
     openapi: "3.0.0",
     info: {
       title: "ComuAPI",
-      description: `Una api creada para conseguir información de jugadores de futbol registrado en comunio y comuniate. <br><br>El <b>Token</b> se pedira a traves de PostMan con las claves proporcionadas por los creadores <br><br>[ BaseUrl: http://${api_host}:${api_port}/api/v2 ]`,
-      version: "2.0.0"
+      description: `Una api creada para conseguir información de jugadores de fútbol registrado en comunio y comuniate.<br>
+                <br>[ BaseUrl: http://${api_host}:${api_port}/api/v3 ]`,
+      version: "3.0.0"
     },
     externalDocs: {
       description: "/docs.json",
-      url: `http://${api_host}:${api_port}/api/v2/docs.json`},
+      url: `http://${api_host}:${api_port}/api/v3/docs.json`},
     security: [ { BearerAuth: [] } ],
     components: {
       securitySchemes: {
@@ -43,7 +44,7 @@ const options = {
       description: "Operaciones relacionadas con el historial de los jugadores"
     },
     {
-      name:"Gestion de jugadores",
+      name:"Gestión de jugadores",
       description: "Añadir un nuevo jugador"
     }
   ],
@@ -60,14 +61,14 @@ const swaggerSpec = swaggerJSDoc(options);
 // Function to setup our docs
 const swaggerDocs = (app) => {
   // Route-Handler to visit our docs
-  app.use("/api/v2/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use("/api/v3/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   // Make our docs in JSON format available
-  app.get("/api/v2/docs.json", (req, res) => {
+  app.get("/api/v3/docs.json", (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.send(swaggerSpec);
   });
   console.log(
-    `Version 2 Docs are available on http://${api_host}:${api_port}/api/v2/docs`
+    `Version 3 Docs are available on http://${api_host}:${api_port}/api/v3/docs`
     );
   };
   
