@@ -1,6 +1,7 @@
 const router = require('express').Router();
+const controller = require('../controllers/post_controller');
+const controllerGet = require('../controllers/jugadores_get_controller');
 
-const controller = require('../controllers/jugadores_get_controller');
 /**
  * @openapi
  * /api/v3/jugadores:
@@ -13,7 +14,7 @@ const controller = require('../controllers/jugadores_get_controller');
  *     parameters:
  *       - name: pag
  *         in: query
- *         description: Página que se desea ver (se muestran 28).
+ *         description: Página que se desea ver (se muestran 8 jugadores).
  *         required: false
  *         schema:
  *           type: integer
@@ -57,6 +58,27 @@ const controller = require('../controllers/jugadores_get_controller');
  *         required: false
  *         schema:
  *           type: integer
+ *       
+ *       - name: media_sofascore
+ *         in: query
+ *         description: Filtra por la media de valoración según la página de SofaScore.
+ *         required: false
+ *         schema:
+ *           type: float
+ * 
+ *       - name: media_puntos
+ *         in: query
+ *         description: Filtra por la media de puntos por partido del jugador.
+ *         required: false
+ *         schema:
+ *           type: integer
+ * 
+ *       - name: total_puntos
+ *         in: query
+ *         description: Filtra por la cantidad total de puntos que ha hecho un jugador.
+ *         required: false
+ *         schema:
+ *           type: integer
  * 
  *       - name: mejor_fichaje
  *         in: query
@@ -67,7 +89,7 @@ const controller = require('../controllers/jugadores_get_controller');
  * 
  *       - name: oferta_minima
  *         in: query
- *         description: Filtra por la oferta minima del jugador.
+ *         description: Filtra por la oferta minima del jugador.<br>
  *                      En el caso de querer buscar jugadores con oferta por encima o por debajo de una cifra concreta, usar greaterThan_cifra y lowerThan_cifra respectivamente.
  *         required: false
  *         schema:
@@ -139,30 +161,141 @@ const controller = require('../controllers/jugadores_get_controller');
  *       400:
  *         description: Criterio de búsqueda incorrecto.
  */
-router.get("/", controller.getJugadores);
+router.get("/", controllerGet.getJugadores);
 
 /**
  * @openapi
- * /api/v2/jugadores/{id_jugador}:
+ * /api/v3/jugadores/{id}:
+ *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *     - "Jugadores"
- *     summary: Devuelve la informacion de un jugador..
- *     description: Devuelve la informacion de un jugador buscado por su id de jugador.
- *     parameters:
+ *     summary: Devuelve la información del jugador con esa ID.
+ *     description: Devuelve la información del jugador que coincida su ID con el introducido.
  * 
- *       - name: id_jugador
+ *     parameters:
+ *       - name: id
  *         in: path
- *         description: ID del jugador a buscar
+ *         description: ID del jugador.
  *         required: true
- *         schema: 
+ *         schema:
  *           type: integer
  * 
  *     responses:
  *       200:
- *         description: Lista los jugadores.
+ *         description: Información del jugador.
  *       500:
- *         description: Internal server error.
+ *         description: Error interno del servidor.
+ *       400:
+ *         description: Criterio de búsqueda incorrecto.
  */
-router.get("/:id", controller.getJugadorPorId);
+router.get("/:id", controllerGet.getJugadorPorId);
+
+/**
+ * @openapi
+ * /api/v3/jugadores:
+ *   post:
+ *     security:
+ *       - BearerAuth: []
+ *     tags:
+ *     - "Gestión de jugadores"
+ *     summary: Crea o guarda y actualiza un jugador.
+ *     description: Inserta a un jugador dentro de la base de datos si no existe, en caso contrario, guarda el jugador en el historial y lo actualiza. Es necesario que el id del jugador sea unico para que su gestion sea correcta.
+ *     responses:
+ *       '201':
+ *         description: Registro guardado con exito
+ *       '400':
+ *         description: Bad request. Error en la solicitud.
+ *       '500':
+ *         description: Error interno del servidor.
+ *       default:
+ *         description: Error no especificado
+ *     requestBody:
+ *       required: true
+ *       content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                       id_jugador:
+ *                         type: integer
+ *                         example: 3333
+ *                       nombre:
+ *                         type: string
+ *                         example: "Joao Cancelo"
+ *                       propietario:
+ *                         type: string
+ *                         example: "Computer"
+ *                       equipo:
+ *                         type: string
+ *                         example: "Barcelona"
+ *                       posicion:
+ *                         type: string
+ *                         example: "DF"
+ *                       titular:
+ *                         type: boolean
+ *                         example: false
+ *                       partidos_jugados:
+ *                         example: "4/7"
+ *                       ranking_general:
+ *                         type: integer
+ *                         example: 47
+ *                       mejor_fichaje:
+ *                         type: boolean
+ *                         example: true
+ *                       media_sofascore:
+ *                         type: number
+ *                         format: double 
+ *                         example: 7.7
+ *                       media_puntos:
+ *                         type: number
+ *                         format: double 
+ *                         example: 10
+ *                       total_puntos:
+ *                         type: number
+ *                         format: double 
+ *                         example: 40
+ *                       puntos_buenos:
+ *                         type: integer
+ *                         example: null
+ *                       oferta_minima:
+ *                         type: integer
+ *                         example: 10340000
+ *                       valor_mercado:
+ *                         type: integer
+ *                         example: 10280000
+ *                       valor_mercado_max:
+ *                         type: integer
+ *                         example: 4000000
+ *                       valor_mercado_min:
+ *                         type: integer
+ *                         example: 10630000
+ *                       ranking_equipo:
+ *                         type: integer
+ *                         example: 6
+ *                       ranking_posicion:
+ *                         type: integer
+ *                         example: 5
+ *                       tarjeta_amarilla:
+ *                         type: integer
+ *                         example: 0
+ *                       tarjeta_roja:
+ *                         type: integer
+ *                         example: 0
+ *                       doble_tarjeta_amarilla:
+ *                         type: integer
+ *                         example: 0
+ *                       racha:
+ *                         type: string
+ *                         example: "Buena"
+ *                       lesion:
+ *                         type: string
+ *                         example: "NO"
+ *       500:
+ *         description: Internal
+ */
+router.post('/', controller.postJugador);
+
 
 module.exports = router;

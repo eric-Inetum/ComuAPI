@@ -2,8 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database/dbconfig');
 const HistorialJugador = require("./HistorialJugador");
 
-class Jugador extends Model {
-}
+class Jugador extends Model {}
 
 Jugador.init({
     id_jugador: {
@@ -74,6 +73,9 @@ Jugador.init({
         type: DataTypes.STRING
     },
     lesion: {
+        type: DataTypes.STRING
+    },
+    foto: {
         type: DataTypes.STRING
     }
 }, {

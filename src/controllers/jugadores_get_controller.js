@@ -16,7 +16,11 @@ async function getJugadores(req, res, next) {
                 orderClause = [query[key], 'DESC'];
 
             } else if (key == "pag") {
-                offsetValue = (query[key] - 1) * 28;
+                if (query[key] <= 0) {
+                    offsetValue = 0;
+                } else {
+                    offsetValue = (query[key] - 1) * 8;
+                }
 
             } else {
                 if (key != "id_jugador" && Jugadores.hasOwnProperty(key)) {
@@ -52,7 +56,7 @@ async function getJugadores(req, res, next) {
         const jugadores = await Jugadores.findAll({ 
             where: whereClause, 
             order: [orderClause], 
-            limit: 28, 
+            limit: 8, 
             offset: offsetValue 
         });
         res.status(200).json({ jugadores });

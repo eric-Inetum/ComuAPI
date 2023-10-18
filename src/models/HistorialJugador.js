@@ -3,7 +3,7 @@ const path = require('path');
 const Jugador = require('./Jugador');
 require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 
-//Get que devuelve el cliente de la bd de pruebas
+// Get que devuelve el cliente de la bd de pruebas
 const sequelize = new Sequelize(
     process.env.DB_DATABASE_PROD,
     process.env.DB_USER_POST,
@@ -16,8 +16,7 @@ const sequelize = new Sequelize(
     }
 );
 
-class HistorialJugador extends Model {
-}
+class HistorialJugador extends Model {}
 
 HistorialJugador.init({
     id_historial_jugador: {

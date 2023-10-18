@@ -2,7 +2,6 @@ const express = require('express');
 const morgan = require('morgan');
 const routerJugadores = require('../routers/jugadores_router');
 const routerHistorial = require('../routers/historial_router');
-const routerUpdateJugador = require('../routers/post_router');
 const { limiter } = require('../security/security');
 const cors = require('cors');
 
@@ -21,6 +20,5 @@ app.use((err, req, res, next)=>{
 
 app.use("/api/v3/jugadores",  routerJugadores);
 app.use("/api/v3/historialJugadores", routerHistorial);
-app.use("/api/v3", routerUpdateJugador);
 
 module.exports = app;
