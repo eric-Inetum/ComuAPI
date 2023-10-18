@@ -1,0 +1,25 @@
+<div class="custom-calendar">
+    <div class="custom-header">
+      <button (click)="previousMonth()">&#8249;</button>
+      <span>{{ activeMonth }} {{ activeYear }}</span>
+      <button (click)="nextMonth()">&#8250;</button>
+    </div>
+    <div class="custom-weekdays">
+      <div *ngFor="let dayOfWeek of customWeekDays" class="custom-weekday">
+        {{ dayOfWeek }}
+      </div>
+    </div>
+    <div class="custom-days">
+      <div *ngFor="let day of daysBeforeMonth" class="custom-dayBefore">
+        {{ day }}
+      </div>
+      <div 
+      *ngFor="let day of daysInMonth" 
+      class="custom-day" 
+      [class.selected]="day === selectedDay" 
+      (click)="selectDate(day)">
+        {{ day }}
+      </div>
+    </div>
+  </div>
+  

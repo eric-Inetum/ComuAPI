@@ -1,1 +1,28 @@
-<p>mercado works!</p>
+<h1>Mercado</h1>
+<div id="mercado" class="mercado">
+    <app-cartamediana *ngFor="let _ of contadorArray; let i = index" [indice]="i" [data]="jugadores" ></app-cartamediana>
+</div>
+
+<p>Next/Previous buttons:</p>
+
+<div class="pagination">
+
+    <button (click)="prevPage()" class="button">
+
+        <span class="lable">PREV</span>
+
+    </button>
+
+    <button style="width: 45px;" class="button">
+
+        <span class="lable">{{page}}</span>
+
+    </button>
+
+    <button (click)="nextPage()" class="button">
+
+        <span class="lable">NEXT</span>
+
+    </button>
+
+</div>

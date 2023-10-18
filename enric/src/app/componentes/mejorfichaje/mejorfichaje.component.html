@@ -1,4 +1,19 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile [style]="" >1</mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-  </mat-grid-list>
+<h1>Mejor Fichaje</h1>
+<div class="mejorFichaje">
+  <div>
+    <app-cartagrande
+      [nombre]="nombre"
+      [precio]="precio"
+      [mediaSofascore]="mediaSofascore"
+      [mediaPuntos]="mediaPuntos"
+      [nombreEquipo]="nombreEquipo"
+      [urlEquipo]="urlEquipo"
+      [urlImagenJugador]="urlImagenJugador"
+      [totalPuntos]="totalPuntos"
+      [posicion]="posicion"
+    ></app-cartagrande>
+  </div>
+  <div>
+    <app-info-jugador></app-info-jugador>
+  </div>
+</div>

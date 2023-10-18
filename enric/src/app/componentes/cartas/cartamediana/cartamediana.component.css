@@ -1,0 +1,115 @@
+
+  
+  /* Estilos para el contenedor que envuelve la imagen y el texto */
+  div {
+    position: relative; /* Para que el texto se posicione de manera relativa al contenedor */
+    width: 289px;
+    display: inline-block;
+  }
+
+  div:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  
+  /* Estilos para la imagen */
+
+  
+  /* Estilos para el texto superpuesto */
+  .nameText {
+    position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+    top: 50%; /* Ajusta la posición vertical del texto (centro) */
+    left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+    transform: translate(
+      -60%,
+      26%
+    ); 
+    color: darkblue; /* Color del texto */
+    font-weight: 100;
+    padding: 10px; /* Espacio interior alrededor del texto */
+  }
+
+  .playerImage {
+    height: 36%;
+    position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+    top: 14%; /* Ajusta la posición vertical del texto (centro) */
+    left: 33%; /* Ajusta la posición horizontal del texto (centro) */
+    padding: 10px; /* Espacio interior alrededor del texto */
+  }
+  
+  .playerImageNull {
+      height: 70%;
+      position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+      top: 6%; /* Ajusta la posición vertical del texto (centro) */
+      left: 8%; /* Ajusta la posición horizontal del texto (centro) */
+      padding: 10px; /* Espacio interior alrededor del texto */
+  }
+  
+  
+  .teamImage {
+      height: 15%;
+      position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+      top: 10%; /* Ajusta la posición vertical del texto (centro) */
+      left: 16%; /* Ajusta la posición horizontal del texto (centro) */
+      padding: 10px; /* Espacio interior alrededor del texto */
+  }
+
+  span.posicion {
+    position: absolute;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    top: 32.4%; /* Ajusta la posición vertical del texto (centro) */
+    left: 20%; 
+    font-size: 20px;
+    font-weight: bold;
+    width: 45px;
+    text-align: center;
+  }
+  span.puntos {
+    position: absolute;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    top: 41.4%; /* Ajusta la posición vertical del texto (centro) */
+    left: 20%; 
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 45px;
+  }
+  span.nombre {
+    position: absolute;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    top: 55%; /* Ajusta la posición vertical del texto (centro) */
+    left: 6%; 
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 250px;
+  }
+  span.estadistica {
+    position: absolute;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    left: 25%; 
+    font-size: 16px;
+    font-weight: bold;
+    width: 250px;
+  }
+  

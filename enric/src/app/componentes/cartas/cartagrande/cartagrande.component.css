@@ -1,0 +1,126 @@
+img {
+  height: 98%;
+}
+
+/* Estilos para el contenedor que envuelve la imagen y el texto */
+.container {
+  position: relative; /* Para que el texto se posicione de manera relativa al contenedor */
+  max-width: 25%; /* Ajusta el ancho del contenedor según tus necesidades */
+  display: inline-block;
+}
+
+/* Estilos para la imagen */
+.image {
+  max-width: 98%; /* Ajusta el ancho de la imagen según tus necesidades */
+  height: auto; /* Mantiene la proporción de aspecto de la imagen */
+}
+
+/* Estilos para el texto superpuesto */
+.nameText {
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(-60%, 26%);
+  color: darkblue; /* Color del texto */
+  font-weight: 100;
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+.precio {
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(1%, 100%);
+  color: darkblue; /* Color del texto */
+  font-weight: 100;
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+.posicion {
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(-162.5%, -180%);
+  color: darkblue; /* Color del texto */
+  font-weight: 100;
+  font-size: 25px;
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+.totalPuntos {
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(-180%, -100%);
+  color: darkblue; /* Color del texto */
+  font-weight: 100;
+  font-size: 25px;
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+
+.mediaSofascore {
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(1%, 160%);
+  color: darkblue; /* Color del texto */
+  font-weight: 100;
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+
+.mediaPuntos {
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(1%, 220%);
+  color: darkblue; /* Color del texto */
+  font-weight: 100;
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+
+.campoPrecio {
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(-155%, 100%);
+  color: darkblue; /* Color del texto */
+  font-weight: 100;
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+
+.campoMediaSofascore {
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(-225%, 160%);
+  color: darkblue; /* Color del texto */
+  font-weight: 100;
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+
+.campoMediaPuntos {
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(-225%, 220%);
+  color: darkblue; /* Color del texto */
+  font-weight: 100;
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+
+.playerImage {
+  height: 37.5%;
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(-37.5%, -90%);
+  color: darkblue; /* Color del texto */
+  padding: 10px; /* Espacio interior alrededor del texto */
+}
+
+.teamImage {
+  height: 10%;
+  position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+  top: 50%; /* Ajusta la posición vertical del texto (centro) */
+  left: 50%; /* Ajusta la posición horizontal del texto (centro) */
+  transform: translate(-160%, -220%);
+  color: darkblue; /* Color del texto */
+  padding: 10px; /* Espacio interior alrededor del texto */
+}

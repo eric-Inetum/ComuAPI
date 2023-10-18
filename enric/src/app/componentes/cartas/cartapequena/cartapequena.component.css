@@ -1,10 +1,53 @@
 /* Estilos para las imágenes pequeñas */
-.imagenes-pequenas {
-    max-width: 110px; /* Ancho máximo deseado */
-    max-height: 110px; /* Altura máxima deseada */
-    margin: 0 10px; /* Espaciado horizontal entre las imágenes */
+div {
+    position: relative;
+    max-width: 100%; /* Ancho máximo deseado */
+    max-height: 100%;
+    display: inline-block;
 }
 
-.imagenes-pequenas:hover{
-    transform: scale(1.2);
+.imagenes-pequenas {
+    max-width: 100%; /* Ancho máximo deseado */
+    max-height: 100%; /* Altura máxima deseada */
+   /* Espaciado horizontal entre las imágenes */
 }
+
+div:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+  .playerImage {
+    height: 36%;
+    position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+    top: 50%; /* Ajusta la posición vertical del texto (centro) */
+    left: 33%; /* Ajusta la posición horizontal del texto (centro) */
+    padding: 10px; /* Espacio interior alrededor del texto */
+  }
+  
+  .playerImageNull {
+      height: 45%;
+      position: absolute; /* Permite posicionar el texto de manera absoluta dentro del contenedor */
+      top: -15%; /* Ajusta la posición vertical del texto (centro) */
+      left: -18%; /* Ajusta la posición horizontal del texto (centro) */
+      padding: 10px; /* Espacio interior alrededor del texto */
+      transform: translate(60%, 25%);
+  }
+
+  span.nombre {
+    width: 50%;
+    position: absolute;
+    color: WHITE;
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    top: 58%; /* Ajusta la posición vertical del texto (centro) */
+    left: 25%; 
+    font-size: 6.5px;
+    font-weight: bold;
+    text-align: center;
+    
+  }
+  

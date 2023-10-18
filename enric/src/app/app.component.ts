@@ -6,12 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'enric';
-  saludo = 'hola';
-  selected: Date | null;
+
 
   constructor() {
-    this.selected = null; // Asigna un valor en el constructor
   }
   
 }

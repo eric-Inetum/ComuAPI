@@ -1,0 +1,45 @@
+/* Estilos para el contenedor que envuelve la imagen y el texto */
+.container {
+  position: relative; /* Para que el texto se posicione de manera relativa al contenedor */
+  max-width: 25%; /* Ajusta el ancho del contenedor según tus necesidades */
+  display: inline-block;
+}
+.left-column {
+  float: left;
+  width: 50%; /* Puedes ajustar el ancho según tus necesidades */
+}
+
+.right-column {
+  float: left;
+  width: 50%; /* Puedes ajustar el ancho según tus necesidades */
+}
+.mat-mdc-card {
+  display: flex;
+  flex-direction: row;
+  width: 65%;
+  height: 35vh;
+  transform: translate(45%, -115%);
+}
+
+mat-card {
+  height: 0;
+  display: flex;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: rgba(245,245,246,255);
+}
+
+#data {
+  font-size: 20px;
+  color: rgba(48,104,157,255);
+}
+
+mat-card-title {
+  font-size: 30px;
+  color: rgba(48,104,157,255);
+}
+
+.mat-mdc-card-content:last-child {
+  padding-bottom: 0px;
+  padding-top: 8px;
+}

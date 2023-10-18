@@ -1,0 +1,93 @@
+.btnFiltroDiv{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15%;
+    
+}
+
+button{
+    font-size: 30px;
+    padding: 10px 70px 10px 70px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: 4px solid;
+    z-index: 200;
+    
+}
+
+.botonFiltro{
+    background-color: #235F97;
+    color: white;
+}
+
+.botonFiltro:hover{
+    background-color: #bdbdbd30;
+    color: #235F97;
+    border: 4px solid #235F97;
+}
+
+.selected{
+    background-color: #bdbdbd30;
+    color: #235F97;
+    border: 4px solid #235F97;
+}
+
+
+.filtro-options {
+    display: none;
+    position: fixed;
+    background-color: #235f97;
+    width: 30%;
+    height: 43%;
+    margin-top: 3%;
+    padding: 1%;
+    border-radius: 20px;
+    text-align: center; /* Centra el contenido del menú horizontalmente */
+    z-index: 99; /* Coloca el menú por encima del fondo transparente */
+}
+
+.show {
+    display: block;
+}
+
+.formInput{
+    padding: 1%;
+}
+
+.formInput label{
+    color: white;
+    font-size: 25px;
+}
+
+.formInput input{
+    font-size: 25px;
+}
+
+.formInput option{
+    font-size: 25px;
+}
+
+.formInput select{
+    font-size: 25px;
+}
+
+.formSubmit{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 30px 30px 0 ;
+
+}
+
+.formSubmit input{
+    font-size: 30px;
+    background-color: #00AB9B;
+    border-radius: 10px;
+    padding: 10px 40px 10px 40px;
+    color: white;
+
+}
+
+.items_filtro{
+    margin-top: 4%;
+}
+

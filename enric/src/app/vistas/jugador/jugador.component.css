@@ -1,0 +1,26 @@
+app-cartagrande {
+    width: 5%;
+}
+
+h1 {
+    margin-left: 27%;
+    color: #235f97;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+
+.mejorJugador {
+    width: 61%; 
+    margin-left: 27%;
+    background-color: #ffff; /* Color de fondo del div */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Sombreado */
+    /* Puedes ajustar los valores de box-shadow según tus preferencias */
+}
+
+
+app-info-jugador {
+    display: flex;
+    height: 0px;
+}
+

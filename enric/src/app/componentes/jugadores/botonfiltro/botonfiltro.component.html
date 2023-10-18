@@ -1,0 +1,46 @@
+<div class="btnFiltroDiv">
+    <button [ngClass]="{'selected': selected}" class="botonFiltro" (click)="toggleMenuFn()" >Filtro ↓</button>
+    <div class="filtro-options" [ngClass]="{ 'show': selected }" id="menu" [@slideInOut]="animationState" (@slideInOut.done)="onAnimationEnd($event)">
+        <div class="items_filtro">
+                <form>
+                    <div class="formInput">
+                        <label for="inputPropietario">Propietario: </label>
+                        <input type="text">
+                    </div>
+                    <br>
+                    <div class="formInput">
+                        <label for="inputPropietario">Puntos Min: </label>
+                        <input type="number">
+                    </div>
+                    <br>
+                    <div class="formInput">
+                        <label for="inputPropietario">Precio Min: </label>
+                        <input type="number">
+                    </div>
+                    <br>
+                    <div class="formInput">
+                        <label for="inputPropietario">Posición: </label>
+                        <select name="" id="">
+                            <option value="DL">Delantero</option>
+                            <option value="MD">Mediocampista</option>
+                            <option value="DF">Defensa</option>
+                            <option value="PT">Portero</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="formInput">
+                        <label for="inputPropietario">Lesion: </label>
+                        <select name="" id="">
+                            <option value="LESIONADO%">Si</option>
+                            <option value="NO%">No</option>
+                        </select>
+                    </div>
+                    
+                    <br>
+                    <div class="formSubmit">
+                        <input type="submit" value="Aceptar">                        
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>

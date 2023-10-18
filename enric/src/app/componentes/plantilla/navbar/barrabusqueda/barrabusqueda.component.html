@@ -1,0 +1,8 @@
+<form (ngSubmit)="sendInput()">
+    <div class="search-box">
+        <input type="text" placeholder="Buscar" name="searchInput" class="search-input" onsubmit="sendInput()">
+        <button class="search-button" (click)="sendInput()">
+            <mat-icon>search</mat-icon> <!-- Ícono de búsqueda -->
+        </button>
+    </div>
+</form>

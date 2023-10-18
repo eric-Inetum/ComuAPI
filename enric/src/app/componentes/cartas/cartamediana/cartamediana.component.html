@@ -1,1 +1,20 @@
-<p>cartamediana works!</p>
+<div>
+  <img src="../../../../assets/cartaNormal.png" />
+  <a (click)="sendInput()">
+    <img src="{{ foto }}" class="playerImage" />
+  </a>
+  <img src="{{ escudo }}" class="teamImage" />
+  <span class="posicion">{{ posicion }}</span>
+  <span class="puntos">{{ puntos }}</span>
+  <span class="nombre">{{ nombre }}</span>
+  <span class="estadistica" style="top: 65%">Precio:</span>
+  <span class="estadistica" style="top: 65%; left: 54%">{{ precio }}</span>
+  <span class="estadistica" style="top: 71%">MS:</span>
+  <span class="estadistica" style="top: 71%; left: 54%">{{
+    media_sofascore
+  }}</span>
+  <span class="estadistica" style="top: 77%">MP:</span>
+  <span class="estadistica" style="top: 77%; left: 54%">{{
+    media_puntos
+  }}</span>
+</div>
