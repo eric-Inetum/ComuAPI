@@ -43,7 +43,7 @@ export class MercadoComponent implements OnInit {
         else{
           this.jugadores = response.jugadores;
           this.contadorArray = new Array(this.jugadores.length);
-          console.log(response)
+          console.log(this.jugadores)
         }
         
       });

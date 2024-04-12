@@ -15,13 +15,13 @@ export class httpClientService {
   
   public recibirMercado(): Observable<any> {
     return this.httpClient.get<any>(
-      'http://10.228.64.236/api/v3/jugadores?oferta_minima=notNull'
+      'http://10.228.64.163/api/v3/jugadores?oferta_minima=notNull'
     );
   }
 
   public recibirJugadores(): Observable<any> {
     return this.httpClient.get<any>(
-      'http://10.228.64.236/api/v3/jugadores'
+      'http://10.228.64.163/api/v3/jugadores'
     );
   }
 
@@ -31,25 +31,25 @@ export class httpClientService {
   } 
   public recibirMejorJugador(): Observable<any> {
     return this.httpClient.get<any>(
-      'http://10.228.64.236/api/v3/jugadores?mejor_fichaje=true'
+      'http://10.228.64.163/api/v3/jugadores?mejor_fichaje=true'
     );
   }
 
   public jugadoresByName(name: string): Observable<any> {
     return this.httpClient.get<any>(
-      `http://10.228.64.236/api/v3/jugadores?nombre=${name}`
+      `http://10.228.64.163/api/v3/jugadores?nombre=${name}`
     );
   }
 
   public jugadoresOrderByPriceOfMarket(): Observable<any> {
     return this.httpClient.get<any>(
-      `http://10.228.64.236/api/v3/jugadores?&orderDescBy=valor_mercado`
+      `http://10.228.64.163/api/v3/jugadores?&orderDescBy=valor_mercado`
     );
   }
 
   public jugadoresOrderByPointsOfMarket(): Observable<any> {
     return this.httpClient.get<any>(
-      `http://10.228.64.236/api/v3/jugadores?&orderDescBy=total_puntos`
+      `http://10.228.64.163/api/v3/jugadores?&orderDescBy=total_puntos`
     );
   }
 
@@ -57,7 +57,7 @@ export class httpClientService {
 
     return this.httpClient.get<any>(
 
-      `http://10.228.64.236/api/v3/jugadores?pag=${page}`
+      `http://10.228.64.163/api/v3/jugadores?pag=${page}`
 
     );
 
@@ -67,7 +67,7 @@ export class httpClientService {
 
     return this.httpClient.get<any>(
 
-      `http://10.228.64.236/api/v3/jugadores?oferta_minima=notNull&pag=${page}`
+      `http://10.228.64.163/api/v3/jugadores?oferta_minima=notNull&pag=${page}`
 
     );
 
