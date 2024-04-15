@@ -31,7 +31,7 @@ def peticionAPI(id_jugador, nombre_jugador, propietario, nombre_equipo, posicion
                 , precio_max, tarjetas_amarillas, tarjetas_rojas, tarjetas_doble_amarilla, racha, lesion):
     
     #Url con la que acceder a todos los jugadores
-    urlAPI = "http://10.228.64.236:80/api/v3/jugadores"
+    urlAPI = "http://10.228.64.163:80/api/v3/jugadores"
 
     # El programa hace una petición a la url declarada anteriormente y recoge el contenido HTML, en el caso de se haya hecho correctamente se almacenará 
     # los identificadores de los jugadores en una lista con el nombre de "api_id". Una vez obtenidos los id, la siguiente variable guarda la estructura 
@@ -110,6 +110,7 @@ cont_lineas_oferta = 0
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 #
 # El programa lee el fichero con el mejor fichaje y saca el id del jugador
+print(os.getcwd())
 fichero_mejor = open('web_scrapping\\input\\mejorFichaje.txt','r')
 for linea in fichero_mejor:
     player_id_mejorFichaje = linea
