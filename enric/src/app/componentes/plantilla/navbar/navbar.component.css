@@ -1,0 +1,60 @@
+
+/* Estilos para el contenedor sticky */
+
+.container {
+
+  position: sticky;
+  position: -webkit-sticky;
+
+  top: 0;
+
+  width: 100%;
+
+  z-index: 9999;
+
+}
+
+mat-toolbar {
+
+  background-color: #235f97; /* Color de fondo */
+
+  display: flex;
+
+  flex-direction: row;
+
+  justify-content: space-between; /* Espacio entre elementos */
+
+  align-items: center; /* Centra verticalmente */
+
+}
+
+ 
+
+/* Estilos personalizados para el logo */
+
+.logo {
+
+  max-width: 55%; /* La imagen no será más ancha que su contenedor */
+  cursor: pointer;
+
+}
+
+ 
+
+.toolbar-center {
+
+  width: 35%;
+
+}
+
+ 
+
+.toolbar-right {
+
+  width: 25%;
+
+  text-align: end;
+
+}
+
+ 

@@ -1,0 +1,70 @@
+.custom-calendar {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+
+  }
+  
+  .custom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    background-color: #9d9d9d;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .custom-header button {
+    background-color: #4a7aeb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  
+  .custom-header span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .custom-weekdays {
+    display: flex;
+    justify-content: space-between;
+    background-color: #4a7aeb;
+    padding: 5px;
+  }
+  
+  .custom-weekday {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .custom-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 0 0 10px 10px;
+  }
+  
+  .custom-day {
+    font-weight: bold;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    /* border: 1px solid #ccc; */
+  }
+  
+  .custom-day:hover {
+    background-color: #00ab9a83;
+    color: #fff;
+  }
+  .selected {
+    background-color: #00AB9B;
+    color: #fff;
+  }

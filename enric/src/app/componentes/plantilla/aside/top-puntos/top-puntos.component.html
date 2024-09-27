@@ -1,0 +1,6 @@
+<div class="content">
+    <h2 class="title-imagenes-pequenas">{{titulo}} <span class="underline"></span></h2>
+    <div class="images">
+        <app-cartapequena *ngFor="let _ of jugadores; let i = index" [indice]="i" [rutaCartaNieto]="rutaCartaHijo" [data]="jugadores" />
+    </div>
+</div>

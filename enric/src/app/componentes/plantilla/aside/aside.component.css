@@ -1,0 +1,22 @@
+
+aside {
+    width: 17%;
+    height:100%;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    pointer-events: all;
+    float: left;
+    font-style: italic;
+    background-color: lightgray;
+    position: fixed;
+    
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: calc(100vh - 10%);
+    overflow: hidden;
+  }

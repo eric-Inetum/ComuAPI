@@ -1,0 +1,24 @@
+<mat-card id="data">
+  <mat-card-content ngClass="left-column">
+    <mat-card-title><b>Info Jugador</b></mat-card-title
+    ><br />
+    <b>· Propietario:</b> {{ propietario }}<br />
+    <b>· Posición:</b> {{ posicion }}<br />
+    <b>· Lesion:</b> {{ lesion }}<br />
+    <b>· Partidos Disputados:</b><br />
+    <b>· Ranking:</b><br />
+    &nbsp; <b>· General:</b> {{ rankingGeneral }}<br />
+    &nbsp; <b>· Posición:</b> {{ rankingPosicion }}<br />
+    &nbsp; <b>· Equipo:</b> {{ rankingEquipo }} <br /><br />
+    <b>Valor Mercado: {{ valorMercado }} €</b><br />
+  </mat-card-content>
+  <mat-card-content ngClass="right-column"
+    ><br /><br /><br /><br />
+    <b>· Puntos: </b>{{ totalPuntos }}<br />
+    <b>· Media Puntos: </b>{{ mediaPuntos }}<br />
+    <b>· Media Sofascore: </b>{{ mediaSofascore
+    }}<br /><br /><br /><br /><br /><br />
+    <b style="margin-top: 100px">Oferta Mínima: {{ ofertaMinima }} €</b
+    ><br />
+  </mat-card-content>
+</mat-card>

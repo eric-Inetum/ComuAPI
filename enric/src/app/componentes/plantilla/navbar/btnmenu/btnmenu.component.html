@@ -1,0 +1,11 @@
+<div class="menu-container">
+    <img src="./assets/menuDespleg.PNG" alt="Imagen del botón" class="menu-button" (click)="toggleMenuFn()">
+    <div class="menu-options" [ngClass]="{ 'show': isMenuOpen }" id="menu" [@slideInOut]="animationState" (@slideInOut.done)="onAnimationEnd($event)">
+        <img *ngIf="showImage" src="./assets/x.png" alt="Imagen X" class="x-image" (click)="closeMenu()">
+        <div class="items_menu">
+            <a href="#">Página principal</a>
+            <a href="/jugadores">Jugadores</a>
+            <a href="http://10.228.64.253/api/v1/docs/">Documentacion API</a>       
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+.menu-container {
+    display: inline-block;
+    position: relative;
+    z-index: 100; /* Coloca el menú por encima de la capa de fondo */
+}
+
+.menu-button {
+    cursor: pointer;
+    z-index: 101; /* Coloca la imagen del botón por encima del menú y el fondo transparente */
+    transition: transform 0.2s; /* Agrega una transición suave para la propiedad transform */
+}
+
+.menu-options {
+    display: none;
+    position: fixed;
+    background-color: #235f97;
+    width: 17%;
+    height: 100%;
+    padding: 1%;
+    top: 0%;
+    right: 0; /* Alinea el menú a la derecha */
+    text-align: center; /* Centra el contenido del menú horizontalmente */
+    z-index: 101; /* Coloca el menú por encima del fondo transparente */
+}
+
+.menu-options a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-top: 60px;
+    padding: 5px 0;
+    transition: transform 0.2s; /* Agrega una transición suave para la propiedad transform */
+
+}
+
+.menu-options a:hover {
+    background-color: darkblue;
+    transform: scale(1.2); /* Aumenta el tamaño al 120% cuando el cursor está encima */
+
+}
+
+.show {
+    display: block;
+}
+
+.x-image {
+    position: absolute;
+    width: 17%;
+    height: 6%;
+    top: 10px; /* Ajusta la posición vertical según tus necesidades */
+    left: 80%; /* Ajusta la posición horizontal según tus necesidades */
+    cursor: pointer;
+    transition: transform 0.2s; /* Agrega una transición suave para la propiedad transform */
+    pointer-events: auto;
+}
+
+.x-image:hover {
+    transform: scale(1.2); /* Aumenta el tamaño al 120% cuando el cursor está encima */
+}
+
+.items_menu {
+    margin-top: 100px; /* Ajusta el valor según la cantidad de margen que desees */
+}
+
+.menu-button:hover {
+
+    transform: scale(1.2); /* Aumenta el tamaño al 120% cuando el cursor está encima */
+
+}
